@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Comforter&family=Dancing+Script&family=Space+Mono&display=swap');
+
+/* Selector de TODO */
+* {
+    font-family: 'Dancing Script', cursive;
+    text-decoration: none;
+    box-sizing: border-box;
+    /* Esto si no tienes anchura en los contenedores ni palabras largas no te va a servir para nada */
+    word-wrap: break-word;
+}
+
+/* Selectores por etiquetas */
+body {
+    margin: 10px 50px;
+}
+
+h1 {
+    font-size: 50px;
+}
+
+/* Selectores por etiquetas múltiples */
+sub, sup {
+    font-weight: 900;
+}
+
+div, address {
+    font-size: 35px;
+}
+
+p, h2, ol, ul, dl {
+    font-size: 30px;
+    line-height: 2em;
+}
+
+/* Selector por ID */
+#derecha {
+    text-align: right;
+}
+
+/* Selector anidado de etiqueta con una clase */
+p.especial {
+    word-spacing: 1em;
+}
+
+/* Selector por atributos */
+[dir="ltr"] {
+    text-transform: uppercase;
+}
+
+/* Selector hijo descendiente, ojo "descendiente", si hubieran mas anidamiento de ins no se seleccionarian */
+p > ins {
+    color: blue;
+}
+
+/* Selector de hermanos, contenidos en el mismo contenedor padre */
+h2 + p {
+    border: darkgreen 5px solid;
+    padding: 10px;
+}
+
+/* Porque los selectores entre hermanos solo funcionan cuando cogen al último hermano? Yo queria coger al que venia primero */
+q ~ i {
+    letter-spacing: 1em;
+}
+
+/* Selector utilizando pseudo clase usando el DOM */
+li:nth-child(2){
+    font-style: oblique;
+}
+
+/* Selector utilizando pseudo clase con estado hover */
+ins:hover{
+    background-color: crimson;
+}
