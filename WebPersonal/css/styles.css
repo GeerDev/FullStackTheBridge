@@ -1,7 +1,87 @@
-div {
-    display: inline;
+/* Importación de las fuentes del proyecto */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Ubuntu:wght@400;500;700&display=swap');
+
+/* Resetear estilos Css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+/* Variables globales */
+
+/* Estilos generales */
+
+body {
+    width: 100vw;
+}
+
+/* Estilos por secciones */
+nav {
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: aquamarine;
+    padding: 30px;
+}
+
+.marca {
+    font-size: 20px;
+}
+
+.enlaces {
+    word-spacing: 3em;
+    font-size: 20px;
+}
+
+.pre {
+    background: url("../assets/teclado.webp") no-repeat center;
+    background-size: cover;
+    height: 100vh;
+    color: white;
+}
+
+h2 {
+    text-align: center;
+}
+
+.caja1 {
+    display: flex;
+    justify-content: center;
+}
+
+.subcaja1 {
+    width: 55%;
+    padding: 0px 50px;
+}
+
+.mapita {
+    display: flex;
+    justify-content: space-around;
 }
 
 .port {
-    display:flex;
+    /* width: 1500px; */
+    margin: auto;
+    padding: 0 60px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
+
+.tarjeta {
+    width: 300px;
+    height: 600px;
+    background-color: yellowgreen;
+}
+
+.prueba {
+    width: 40%;
+}
+
+img {
+    width: 400px;
+    height: 300px;
+}
+/* Responsive */
