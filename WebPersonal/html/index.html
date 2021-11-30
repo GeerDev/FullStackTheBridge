@@ -5,11 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/styles.css" type="text/css">
+    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Web Personal Ger</title>
 </head>
 <body>
     <main>
-
+        
         <!-- Sección Navegación -->
         <header class="anchura">
             <nav>
@@ -31,7 +33,7 @@
         </section>
 
         <!-- Sección Biografía -->
-        <section>
+        <section class="seccion">
             <h2>Zona Biografia</h2>
             <div class="caja1">
                 <img src="../assets/pc.jpg" alt="Este es el texto por si no carga la imagen de biografia">
@@ -43,7 +45,7 @@
         </section>
 
         <!-- Sección Portfolio -->
-        <section>
+        <section class="seccion">
             <h2>Zona Portfolio</h2>
             <div class="port">
                 <div class="tarjeta">
@@ -65,14 +67,18 @@
         </section>
 
         <!-- Sección Contacto -->
-        <section>
+        <section class="seccion">
             <h2>Zona Contacto</h2>
             <div class="mapita">
                 <form action="post">
-                    <label for="">Campo1</label>
-                    <input type="text" name="" id="">
-                    <label for="">Campo1</label>
-                    <input type="text" name="" id="">
+                    <div style="margin:10px 0;">
+                        <label for="">Campo1</label>
+                        <input type="text" name="" id="">
+                    </div>
+                    <div style="margin:10px 0;">
+                        <label for="">Campo1</label>
+                        <input type="text" name="" id="">
+                    </div>
                     <p><input type="submit" value="Boton para mandar formulario"></p>
                 </form>
                 <aside class="prueba">
@@ -84,6 +90,11 @@
         <!-- Sección Pie de Página -->
         <footer>
             <p>Created by Ger</p>
+            <ul class="lista">
+                <li><a href="https://github.com/Gerahara" target="_blank"><i class="fa fa-github"></i></a></li>
+                <li><a href="https://twitter.com/gerahara" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                <li><a href="https://www.linkedin.com/in/amparoramada" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+            </ul>
         </footer>
     
     </main>
