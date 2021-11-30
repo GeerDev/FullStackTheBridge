@@ -5,20 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/styles.css" type="text/css">
-    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"> -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <title>Web Personal Ger</title>
 </head>
 <body>
     <main>
         
         <!-- Sección Navegación -->
-        <header class="anchura">
+        <header>
             <nav>
-                <div class="marca">
-                    <a href="index.html">Web Personal Ger</a>
+                <div class="nav__marca">
+                    <a href="index.html"><h1>Web Personal Ger</h1></a>
                 </div>
-                <div class="enlaces">
+                <div class="nav__enlaces">
                     <a href="index.html">Home</a>
                     <a href="biografia.html">Biografia</a>
                     <a href="portfolio.html">Portfolio</a>
@@ -28,72 +27,79 @@
         </header>
 
         <!-- Sección Presentación -->
-        <section class="pre">
-            <h1> Este es la web personal de Ger</h1>
+        <section class="home" id="home">
+            <div class="home__texto">
+                <p class="text-1">Hola, mi nombre es</p>
+                <p class="text-2">Germán Fernández</p>
+                <p class="text-3">y soy Desarrollador Web</p>
+            </div>
         </section>
 
+        <article class="guia">
         <!-- Sección Biografía -->
-        <section class="seccion">
+        <section id="bio">
             <h2>Zona Biografia</h2>
-            <div class="caja1">
-                <img src="../assets/pc.jpg" alt="Este es el texto por si no carga la imagen de biografia">
-                <div class="subcaja1">
+            <div class="biografia">
+                <div class="biografia__izquierda">
+                    <img src="../assets/computer.jpg" alt="Este es el texto por si no carga la imagen de biografia">
+                </div>
+                <div class="biografia__derecha">
                     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde fugiat a voluptate expedita quisquam maxime dolorem ab aspernatur obcaecati architecto rerum rem quae est sapiente, optio recusandae similique omnis totam eius libero repudiandae perferendis. Eveniet excepturi temporibus sit nobis odio?</p>
-                    <a href="">Este enlace va a ser un boton</a>
+                    <a href="" class="biografia__boton">Ir al Blog</a>
                 </div>
             </div>
         </section>
 
         <!-- Sección Portfolio -->
-        <section class="seccion">
+        <section id="port">
             <h2>Zona Portfolio</h2>
-            <div class="port">
-                <div class="tarjeta">
-                    <i>Esto es un icono</i>
-                    <h3>Carta</h3>
-                    <p>Descripcion de la carta</p>
-                </div>
-                <div class="tarjeta">
-                    <i>Esto es un icono</i>
-                    <h3>Carta</h3>
-                    <p>Descripcion de la carta</p>
-                </div>
-                <div class="tarjeta">
-                    <i>Esto es un icono</i>
-                    <h3>Carta</h3>
-                    <p>Descripcion de la carta</p>
-                </div>
-            </div>
+            <ul class="portfolio">
+                <li class="portfolio__tarjeta">
+                    <i class="fas fa-laptop-code"></i>
+                    <h3>Front-End</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit praesentium libero est ab fugit repudiandae placeat veniam suscipit deserunt neque tempora quaerat cupiditate atque voluptatum similique reiciendis, numquam aliquam corporis.</p>
+                </li>
+                <li class="portfolio__tarjeta">
+                    <i class="fas fa-code"></i>
+                    <h3>Back-End</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit praesentium libero est ab fugit repudiandae placeat veniam suscipit deserunt neque tempora quaerat cupiditate atque voluptatum similique reiciendis, numquam aliquam corporis.</p>
+                </li>
+                <li class="portfolio__tarjeta">
+                    <i class="fas fa-cloud"></i>
+                    <h3>Devops</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit praesentium libero est ab fugit repudiandae placeat veniam suscipit deserunt neque tempora quaerat cupiditate atque voluptatum similique reiciendis, numquam aliquam corporis.</p>
+                </li>
+            </ul>
         </section>
 
         <!-- Sección Contacto -->
-        <section class="seccion">
+        <section id="contact">
             <h2>Zona Contacto</h2>
-            <div class="mapita">
+            <div class="contacto">
                 <form action="post">
-                    <div style="margin:10px 0;">
-                        <label for="">Campo1</label>
+                    <h3>Contacta conmigo</h3>
+                    <div>
+                        <input type="text" name="" id="">
                         <input type="text" name="" id="">
                     </div>
-                    <div style="margin:10px 0;">
-                        <label for="">Campo1</label>
-                        <input type="text" name="" id="">
-                    </div>
-                    <p><input type="submit" value="Boton para mandar formulario"></p>
+                    <input type="text" name="" id="">
+                    <textarea name="" id="" cols="30" rows="10"></textarea>
+                    <input type="submit" value="Enviar Formulario">
                 </form>
-                <aside class="prueba">
+                <aside>
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3037.4282923154888!2d-3.694859984318273!3d40.42151426327192!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4229dd28bc4f6b%3A0x1b818ff2f527183b!2sThe%20Bridge%20%7C%20Digital%20Talent%20Accelerator!5e0!3m2!1ses!2ses!4v1638141247661!5m2!1ses!2ses" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                 </aside>
             </div>
         </section>
+        </article>
 
         <!-- Sección Pie de Página -->
         <footer>
-            <p>Created by Ger</p>
-            <ul class="lista">
-                <li><a href="https://github.com/Gerahara" target="_blank"><i class="fa fa-github"></i></a></li>
-                <li><a href="https://twitter.com/gerahara" target="_blank"><i class="fa fa-twitter"></i></a></li>
-                <li><a href="https://www.linkedin.com/in/amparoramada" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+            <p>Created by Ger | <span class="far fa-copyright"></span> 2021 All rights reserved.</span></p>
+            <ul class="footer__lista">
+                <li><a href="https://github.com/Gerahara" target="_blank"><i class="fab fa-github"></i></a></li>
+                <li><a href="https://twitter.com/gerahara" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                <li><a href="https://www.linkedin.com/in/amparoramada" target="_blank"><i class="fab fa-linkedin"></i></a></li>
             </ul>
         </footer>
     
