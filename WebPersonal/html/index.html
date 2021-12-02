@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/styles.css" type="text/css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <!-- Importación Typed -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
     <title>Web Personal Ger</title>
 </head>
 <body>
@@ -17,11 +19,14 @@
                 <div class="nav__marca">
                     <a href="index.html"><h1>Web Personal Ger</h1></a>
                 </div>
+                <div class="menu-btn">
+                    <i class="fas fa-bars" id="cruz"></i>
+                </div>
                 <div class="nav__enlaces">
-                    <a href="index.html">Home</a>
-                    <a href="biografia.html">Biografia</a>
-                    <a href="portfolio.html">Portfolio</a>
-                    <a href="contacto.html">Contacto</a>
+                    <a href="#home" class="navbar__enlace">Home</a>
+                    <a href="#bio" class="navbar__enlace">Biografia</a>
+                    <a href="#port" class="navbar__enlace">Portfolio</a>
+                    <a href="#contact" class="navbar__enlace">Contacto</a>
                 </div>
             </nav>
         </header>
@@ -31,7 +36,7 @@
             <div class="home__texto">
                 <p class="text-1">Hola, mi nombre es</p>
                 <p class="text-2">Germán Fernández</p>
-                <p class="text-3">y soy Desarrollador Web</p>
+                <p class="text-3">y soy <span id="typing"></span></p>
             </div>
         </section>
 
@@ -44,7 +49,7 @@
                 </aside>
                 <article class="biografia__derecha">
                     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde fugiat a voluptate expedita quisquam maxime dolorem ab aspernatur obcaecati architecto rerum rem quae est sapiente, optio recusandae similique omnis totam eius libero repudiandae perferendis. Eveniet excepturi temporibus sit nobis odio?</p>
-                    <a href="" class="biografia__boton">Ir al Blog</a>
+                    <a href="biografia.html" class="biografia__boton">Ir al Blog</a>
                 </article>
             </div>
         </section>
@@ -53,21 +58,27 @@
         <section id="port" class="sectionport">
             <h2>Zona Portfolio</h2>
             <ul class="portfolio">
+                <a href="portfolio.html">
                 <li class="portfolio__tarjeta">
                     <i class="fas fa-laptop-code"></i>
                     <h3>Front-End</h3>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit praesentium libero est ab fugit repudiandae placeat veniam suscipit deserunt neque tempora quaerat cupiditate atque voluptatum similique reiciendis, numquam aliquam corporis.</p>
                 </li>
+                </a>
+                <a href="portfolio.html">
                 <li class="portfolio__tarjeta">
                     <i class="fas fa-code"></i>
                     <h3>Back-End</h3>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit praesentium libero est ab fugit repudiandae placeat veniam suscipit deserunt neque tempora quaerat cupiditate atque voluptatum similique reiciendis, numquam aliquam corporis.</p>
                 </li>
+                </a>
+                <a href="portfolio.html">
                 <li class="portfolio__tarjeta">
                     <i class="fas fa-cloud"></i>
                     <h3>Devops</h3>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit praesentium libero est ab fugit repudiandae placeat veniam suscipit deserunt neque tempora quaerat cupiditate atque voluptatum similique reiciendis, numquam aliquam corporis.</p>
                 </li>
+                </a>
             </ul>
         </section>
 
@@ -75,14 +86,14 @@
         <section id="contact" class="guia sectioncontact">
             <h2>Zona Contacto</h2>
             <div class="contacto">
-                <form action="post">
+                <form action="contacto.html" method="get">
                     <h3>Contacta conmigo</h3>
                     <div>
-                        <input type="text" name="" id="">
-                        <input type="text" name="" id="">
+                        <input type="text" name="nombre" id="nombre" placeholder="Nombre..." required autofocus>
+                        <input type="email" name="email" id="email" placeholder="Email..." required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
                     </div>
-                    <input type="text" name="" id="">
-                    <textarea name="" id="" cols="30" rows="10"></textarea>
+                    <input type="text" name="asunto" id="asunto" placeholder="Asunto..." required>
+                    <textarea name="mensaje" id="mensaje" cols="30" rows="10" placeholder="Inserta tu mensaje aquí..." required></textarea>
                     <input type="submit" value="Enviar Formulario">
                 </form>
                 <aside>
@@ -100,7 +111,16 @@
                 <li><a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a></li>
             </ul>
         </footer>
+
+        <!-- Botón Scroll -->
+        <div class="scroll-up-btn">
+            <i class="fas fa-angle-up"></i>
+        </div>
     
     </main>
+
+    <!-- Importación archivos Js -->
+    <script src="../js/scripts.js"></script>
+
 </body>
 </html>

@@ -19,6 +19,10 @@ input, textarea {
     box-shadow: none;
 }
 
+html{
+    scroll-behavior: smooth; /* Desplazamiento suave */
+}
+
 /* Variables globales */
 
 
@@ -73,6 +77,12 @@ h2 {
     padding: 30px 0;
     font-family:'Ubuntu', 'sans-serif';
     z-index: 999;
+    transition: all 0.3s ease;
+}
+
+.nav.javascript{
+    padding: 15px 0;
+    background-color:#000;
 }
 
 .nav__marca {
@@ -90,6 +100,14 @@ h2 {
 
 .nav__enlaces a {
     color: white;
+}
+
+/* Botón Barra de Navegación */
+.menu-btn{
+    color:white;
+    font-size: 23px;
+    cursor: pointer;
+    display: none;
 }
 
 /* Home */
@@ -125,10 +143,16 @@ h2 {
     margin: 5px 0;
 }
 
+.text-3 span{
+    color: darkgoldenrod;
+    font-weight: 500;
+}
+
 /* Biografía */
 .biografia {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .biografia__derecha {
@@ -143,6 +167,7 @@ h2 {
     border-radius: 5px;
     padding: 10px 30px;
     margin-top: 20px; 
+    font-weight: 800;
 }
 
 /* Portfolio */
@@ -155,6 +180,7 @@ h2 {
 .portfolio {
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 .portfolio__tarjeta {
@@ -172,6 +198,7 @@ h2 {
 
 .portfolio__tarjeta i {
     font-size: 40px;
+    color: black;
 }
 
 .portfolio__tarjeta h3 {
@@ -190,7 +217,8 @@ h2 {
 .contacto {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 form {
@@ -204,10 +232,14 @@ form h3 {
 }
 
 form input {
-    border: 1px solid black;
+    border: 1px solid lightgrey;
     margin: 5px 0px;
     height: 45px;
     border-radius: 6px;
+    font-size: 17px;
+    font-family: 'Poppins', sans-serif;
+    padding: 0 10px;
+    outline: none;
 }
 
 form div {
@@ -221,10 +253,18 @@ form div input {
 }
 
 textarea {
-    border: 1px solid black;
+    border: 1px solid lightgrey;
     resize: none;
     border-radius: 6px;
     margin: 5px 0px;
+    font-size: 17px;
+    font-family: 'Poppins', sans-serif;
+    padding: 10px 10px;
+    outline: none;
+}
+
+form input:focus, textarea:focus {
+    border-color: rgb(182, 135, 17);
 }
 
 [type="submit"] {
@@ -234,8 +274,10 @@ textarea {
     padding: 10px 30px;
     margin-top: 20px; 
     font-size: 20px;
+    font-weight: 800;
     width: 40%;
     border: none;
+    cursor: pointer;
 }
 
 /* Footer */
@@ -251,14 +293,44 @@ textarea {
 }
 
 .footer__lista {
-width: 120px;
-display: flex;
-justify-content: space-between;
+    width: 120px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .footer__lista i {
     font-size: 20px;
     color: white;
+}
+
+/* Estilos para el Botón Scroll */
+.scroll-up-btn{
+    position: fixed;
+    height: 45px;
+    width: 42px;
+    background: darkgoldenrod;
+    right: 30px;
+    bottom: 10px;
+    text-align: center;
+    line-height: 45px;
+    color: #fff;
+    z-index: 999;
+    font-size: 30px;
+    border-radius: 6px;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.scroll-up-btn:hover{
+    filter: brightness(90%);
+}
+
+.scroll-up-btn.show{
+    bottom: 30px;
+    opacity: 1;
+    pointer-events: auto;
 }
 
 /* Estilos por secciones BIOGRAFIA PAGE */
@@ -301,7 +373,7 @@ justify-content: space-between;
     align-items: center;
     width: 100vw;
     background-color: black;
-    padding: 20px;
+    padding: 15px 0px;
     font-family:'Ubuntu', 'sans-serif';
     z-index: 999;
 }
@@ -314,6 +386,68 @@ justify-content: space-between;
 
 
 /* Estilos por secciones CONTACTO PAGE */
+.todoOK {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fijo {
+    position: absolute;
+    bottom: 0;
+}
 
 
 /* Responsive */
+@media (max-width: 1104px){
+    .menu-btn{
+        display: block;
+        z-index: 999;
+    }
+
+    #cruz.active::before{
+        content: "\f00d";
+    }
+
+    .nav__enlaces{
+        position: fixed;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        height: 100vh;
+        width: 100%;
+        left: -100%;
+        top: 0;
+        background-color: black;
+        text-align: center;
+        padding-top: 60px;
+        transition: all 0.3s ease;
+    }
+
+    .nav__enlaces.active{
+        left: 0;
+    }
+    
+    .nav__enlaces a {
+        padding: 20px 0;
+    }
+
+    .biografia__derecha {
+        width: 100%;
+    }
+
+    form {
+        width: 100%;
+    }
+}
+
+@media (max-width: 1104px){
+
+}
+
+@media (max-width: 400px){
+    img, iframe {
+        width: 300px;
+        height: 250px;
+    }
+}
