@@ -80,7 +80,7 @@ h2 {
     background-color: transparent;
     padding: 30px 0;
     font-family:'Ubuntu', 'sans-serif';
-    z-index: 999;
+    z-index: 900;
     transition: all 0.3s ease;
 }
 
@@ -104,6 +104,11 @@ h2 {
 
 .nav__enlaces a {
     color: white;
+    transition: all 0.3s ease;
+}
+
+.nav__enlaces a:hover {
+    color: rgb(182, 135, 17);
 }
 
 /* Botón Barra de Navegación */
@@ -174,7 +179,15 @@ h2 {
     padding: 10px 30px;
     margin-top: 20px; 
     font-weight: 800;
+    border: 2px solid rgb(182, 135, 17);
     text-align: center;
+    transition: all 0.3s ease;
+    
+}
+
+.biografia__boton:hover {
+    color:rgb(182, 135, 17);
+    background-color: white;
 }
 
 /* Portfolio */
@@ -201,6 +214,17 @@ h2 {
     padding: 20px;
     margin-bottom: 40px;
     cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid rgb(182, 135, 17);
+}
+
+.portfolio__tarjeta:hover {
+    background-color: black;
+    transform: scale(1.1);
+}
+
+.portfolio__tarjeta:hover i{
+    color:white;
 }
 
 .portfolio__tarjeta i {
@@ -214,6 +238,7 @@ h2 {
 
 .portfolio__tarjeta p, .portfolio__tarjeta h3 {
     color:white;
+    text-align: center;
 }
 
 /* Contacto */
@@ -285,9 +310,16 @@ form input:focus, textarea:focus {
     font-size: 20px;
     font-weight: 800;
     width: 200px;
-    border: none;
     cursor: pointer;
     text-align: center;
+    border: 2px solid rgb(182, 135, 17);
+    transition: all 0.3s ease;
+    line-height: 10px;
+}
+
+[type="submit"]:hover {
+    color:rgb(182, 135, 17);
+    background-color: white;
 }
 
 /* Footer */
@@ -311,6 +343,11 @@ form input:focus, textarea:focus {
 .footer__lista i {
     font-size: 20px;
     color: white;
+    transition: all 0.3s ease;
+}
+
+.footer__lista i:hover {
+    color: rgb(182, 135, 17);
 }
 
 /* Estilos para el Botón Scroll */
@@ -354,7 +391,7 @@ form input:focus, textarea:focus {
 }
 
 .blog section {
-    margin: 25px 100px;
+    margin: 25px 0px;
 }
 
 .blog section:nth-child(even) .biografia{
@@ -391,18 +428,27 @@ form input:focus, textarea:focus {
 }
 
 /* Estilos por secciones PORTFOLIO PAGE */
+.containerflex {
+    display: flex;
+    justify-content: center;
+}
 .containergrid {
     margin-top: 70px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
-    width: 100%; 
+    max-width: 1120px;
+    row-gap: 35px; 
 }
 
 .containergrid article i {
     margin: 0 15px;
     font-size: 10rem;
+}
+
+.footer__port {
+    position: absolute;
+    bottom: 0;
 }
 
 /* Estilos por secciones CONTACTO PAGE */
@@ -504,6 +550,11 @@ form input:focus, textarea:focus {
         margin: 5px 0px 0px 8px;
     }
 
+    .blog__derecha {
+        width: 100%;
+        text-align: center;
+    }
+
     .biografia__derecha {
         width: 100%;
     }
@@ -525,6 +576,13 @@ form input:focus, textarea:focus {
     form {
         width: 100%;
     }
+}
+
+@media (max-width: 758px){
+    .footer__port {
+        position: static;
+}
+
 }
 
 @media (max-width: 480px){
