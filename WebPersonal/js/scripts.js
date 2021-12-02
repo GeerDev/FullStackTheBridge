@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () =>{
        
     // Maquina de escribir
     const typed = new Typed("#typing", {
-        strings: ["Front-End", "Back-End", "Devops", "Developer"],
+        strings: ["Front-End.", "Back-End.", "Devops.", "Developer."],
         typeSpeed: 100,
         backSpeed: 60,
         loop: true

@@ -61,6 +61,10 @@ h2 {
 
 /* Estilos por secciones HOME PAGE */
 /* Navegación */
+#Ger {
+    color:rgb(182, 135, 17);
+}
+
 .container {
     padding-top: 110px ;
 }
@@ -104,10 +108,10 @@ h2 {
 
 /* Botón Barra de Navegación */
 .menu-btn{
+    display: none;
     color:white;
     font-size: 23px;
     cursor: pointer;
-    display: none;
 }
 
 /* Home */
@@ -144,7 +148,7 @@ h2 {
 }
 
 .text-3 span{
-    color: darkgoldenrod;
+    color: #000;
     font-weight: 500;
 }
 
@@ -158,16 +162,19 @@ h2 {
 .biografia__derecha {
     width: 55%;
     padding: 0px 50px;
+    display: flex;
+    flex-direction: column;
 }
 
 .biografia__boton {
-    display: inline-block;
+    width: 200px;
     background-color: rgb(182, 135, 17);
     color: white;
     border-radius: 5px;
     padding: 10px 30px;
     margin-top: 20px; 
     font-weight: 800;
+    text-align: center;
 }
 
 /* Portfolio */
@@ -216,9 +223,8 @@ h2 {
 
 .contacto {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
-    flex-wrap: wrap;
 }
 
 form {
@@ -240,12 +246,14 @@ form input {
     font-family: 'Poppins', sans-serif;
     padding: 0 10px;
     outline: none;
+    width:100%;
 }
 
 form div {
     display: flex;
     justify-content: center;
     gap: 10px;
+    width: 100%;
 }
 
 form div input {
@@ -261,6 +269,7 @@ textarea {
     font-family: 'Poppins', sans-serif;
     padding: 10px 10px;
     outline: none;
+    width: 100%;
 }
 
 form input:focus, textarea:focus {
@@ -275,9 +284,10 @@ form input:focus, textarea:focus {
     margin-top: 20px; 
     font-size: 20px;
     font-weight: 800;
-    width: 40%;
+    width: 200px;
     border: none;
     cursor: pointer;
+    text-align: center;
 }
 
 /* Footer */
@@ -308,7 +318,7 @@ form input:focus, textarea:focus {
     position: fixed;
     height: 45px;
     width: 42px;
-    background: darkgoldenrod;
+    background: rgb(182, 135, 17);
     right: 30px;
     bottom: 10px;
     text-align: center;
@@ -319,7 +329,6 @@ form input:focus, textarea:focus {
     border-radius: 6px;
     cursor: pointer;
     opacity: 0;
-    pointer-events: none;
     transition: all 0.3s ease;
 }
 
@@ -330,7 +339,6 @@ form input:focus, textarea:focus {
 .scroll-up-btn.show{
     bottom: 30px;
     opacity: 1;
-    pointer-events: auto;
 }
 
 /* Estilos por secciones BIOGRAFIA PAGE */
@@ -383,7 +391,19 @@ form input:focus, textarea:focus {
 }
 
 /* Estilos por secciones PORTFOLIO PAGE */
+.containergrid {
+    margin-top: 70px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%; 
+}
 
+.containergrid article i {
+    margin: 0 15px;
+    font-size: 10rem;
+}
 
 /* Estilos por secciones CONTACTO PAGE */
 .todoOK {
@@ -399,14 +419,26 @@ form input:focus, textarea:focus {
 
 
 /* Responsive */
-@media (max-width: 1104px){
+@media (max-width: 1280px){
     .menu-btn{
         display: block;
+        width: 20px;
+        overflow: hidden;
         z-index: 999;
     }
 
-    #cruz.active::before{
-        content: "\f00d";
+    .move {
+        display: flex;
+        margin-left: -10px;
+        transition: margin 0.5s ease;
+    }
+
+    .move i {
+        margin: 0 10px;
+    }
+
+    .move.active {
+        margin-left: -50px;
     }
 
     .nav__enlaces{
@@ -424,7 +456,7 @@ form input:focus, textarea:focus {
         transition: all 0.3s ease;
     }
 
-    .nav__enlaces.active{
+    .nav__enlaces.active {
         left: 0;
     }
     
@@ -432,8 +464,62 @@ form input:focus, textarea:focus {
         padding: 20px 0;
     }
 
+    .contacto {
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+
+    form h3 {
+        text-align: center;
+        margin-top: 15px;
+    }
+
+    form {
+        align-items: center;
+        width: 80%;
+        padding: 0px 40px;
+    }
+
+    iframe {
+        width: 950px;
+        height: 350px;
+    }
+
+}
+
+@media (max-width: 992px){
+    .text-1{
+        font-size: 19px;
+        margin-left: 8px;
+    }
+    
+    .text-2{
+        font-size: 55px;
+        font-weight: 600;
+        margin-left: 20px;
+    }
+    
+    .text-3{
+        font-size: 25px;
+        margin: 5px 0px 0px 8px;
+    }
+
     .biografia__derecha {
         width: 100%;
+    }
+
+    .biografia__derecha {
+        justify-content: center;
+        align-items: center;
+    }
+
+    .biografia__derecha p {
+        text-align: center;
+    }
+
+    iframe {
+        width: 500px;
+        height: 300px;
     }
 
     form {
@@ -441,13 +527,22 @@ form input:focus, textarea:focus {
     }
 }
 
-@media (max-width: 1104px){
-
-}
-
-@media (max-width: 400px){
+@media (max-width: 480px){
     img, iframe {
         width: 300px;
         height: 250px;
     }
+
+    .scroll-up-btn {
+        display: none;
+    }
+
+    .nav__marca {
+        font-size: 20px;
+    }
+
+    .menu-btn {
+        margin-right: 20px;
+    }
+
 }
