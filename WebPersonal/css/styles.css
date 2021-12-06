@@ -24,15 +24,20 @@ html{
 }
 
 /* Variables globales */
-
-
+:root {
+    --blanco: #fff;
+    --negro: #000;
+    --amarillo: rgb(182, 135, 17);
+    --Poppins: 'Poppins', 'sans-serif';
+    --Ubuntu: 'Ubuntu', 'sans-serif';
+}
 
 /* Estilos generales */
 .main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #fff;
+    background-color: var(--blanco);
 }
 
 .guia {
@@ -42,11 +47,11 @@ html{
 
 .sectionbio, .sectionport {
     margin: 30px 0;
-    font-family: 'Poppins', 'sans-serif';
+    font-family: var(--Poppins);
 }
 
 .sectioncontact {
-    font-family: 'Poppins', 'sans-serif';
+    font-family: var(--Poppins);
 }
 
 img {
@@ -62,7 +67,7 @@ h2 {
 /* Estilos por secciones HOME PAGE */
 /* Navegación */
 #Ger {
-    color:rgb(182, 135, 17);
+    color:var(--amarillo)
 }
 
 .container {
@@ -79,14 +84,14 @@ h2 {
     width: 100%;
     background-color: transparent;
     padding: 30px 0;
-    font-family:'Ubuntu', 'sans-serif';
+    font-family:var(--Ubuntu);
     z-index: 900;
     transition: all 0.3s ease;
 }
 
 .nav.javascript{
     padding: 15px 0;
-    background-color:#000;
+    background-color:var(--negro);
 }
 
 .nav__marca {
@@ -94,7 +99,7 @@ h2 {
 }
 
 .nav__marca a {
-    color: white;
+    color: var(--blanco);
 }
 
 .nav__enlaces {
@@ -103,18 +108,18 @@ h2 {
 }
 
 .nav__enlaces a {
-    color: white;
+    color: var(--blanco);
     transition: all 0.3s ease;
 }
 
 .nav__enlaces a:hover {
-    color: rgb(182, 135, 17);
+    color: var(--amarillo);
 }
 
 /* Botón Barra de Navegación */
 .menu-btn{
     display: none;
-    color:white;
+    color:var(--blanco);
     font-size: 23px;
     cursor: pointer;
 }
@@ -128,8 +133,8 @@ h2 {
     background-size: cover;
     width: 100%;
     height: 100vh;
-    color: white;
-    font-family:'Ubuntu', 'sans-serif';
+    color: var(--blanco);
+    font-family:var(--Ubuntu);
 }
 
 .home__texto {
@@ -153,7 +158,7 @@ h2 {
 }
 
 .text-3 span{
-    color: #000;
+    color: var(--negro);
     font-weight: 500;
 }
 
@@ -173,27 +178,27 @@ h2 {
 
 .biografia__boton {
     width: 200px;
-    background-color: rgb(182, 135, 17);
-    color: white;
+    background-color: var(--amarillo);
+    color: var(--blanco);
     border-radius: 5px;
     padding: 10px 30px;
     margin-top: 20px; 
     font-weight: 800;
-    border: 2px solid rgb(182, 135, 17);
+    border: 2px solid var(--amarillo);
     text-align: center;
     transition: all 0.3s ease;
     
 }
 
 .biografia__boton:hover {
-    color:rgb(182, 135, 17);
-    background-color: white;
+    color:var(--amarillo);
+    background-color: var(--blanco);
 }
 
 /* Portfolio */
 #port {
     width: 100%;
-    background-color: #DFDBE5;
+    background-color: var(--blanco);
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.4'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 1.4l2.83 2.83 1.41-1.41L1.41 0H0v1.41zM38.59 40l-2.83-2.83 1.41-1.41L40 38.59V40h-1.41zM40 1.41l-2.83 2.83-1.41-1.41L38.59 0H40v1.41zM20 18.6l2.83-2.83 1.41 1.41L21.41 20l2.83 2.83-1.41 1.41L20 21.41l-2.83 2.83-1.41-1.41L18.59 20l-2.83-2.83 1.41-1.41L20 18.59z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 }
 
@@ -209,27 +214,27 @@ h2 {
     align-items: center;
     width: 320px;
     height: 350px;
-    background-color: rgb(182, 135, 17);
+    background-color: var(--amarillo);
     border-radius: 10px;
     padding: 20px;
     margin-bottom: 40px;
     cursor: pointer;
     transition: all 0.3s ease;
-    border: 2px solid rgb(182, 135, 17);
+    border: 2px solid var(--amarillo);
 }
 
 .portfolio__tarjeta:hover {
-    background-color: black;
+    background-color: var(--negro);
     transform: scale(1.1);
 }
 
 .portfolio__tarjeta:hover i{
-    color:white;
+    color:var(--blanco);
 }
 
 .portfolio__tarjeta i {
     font-size: 40px;
-    color: black;
+    color: var(--negro);
 }
 
 .portfolio__tarjeta h3 {
@@ -237,7 +242,7 @@ h2 {
 }
 
 .portfolio__tarjeta p, .portfolio__tarjeta h3 {
-    color:white;
+    color:var(--blanco);
     text-align: center;
 }
 
@@ -268,7 +273,7 @@ form input {
     height: 45px;
     border-radius: 6px;
     font-size: 17px;
-    font-family: 'Poppins', sans-serif;
+    font-family: var(--Poppins);
     padding: 0 10px;
     outline: none;
     width:100%;
@@ -291,19 +296,19 @@ textarea {
     border-radius: 6px;
     margin: 5px 0px;
     font-size: 17px;
-    font-family: 'Poppins', sans-serif;
+    font-family: var(--Poppins);
     padding: 10px 10px;
     outline: none;
     width: 100%;
 }
 
 form input:focus, textarea:focus {
-    border-color: rgb(182, 135, 17);
+    border-color: var(--amarillo);
 }
 
 [type="submit"] {
-    background-color: rgb(182, 135, 17);
-    color: white;
+    background-color: var(--amarillo);
+    color: var(--blanco);
     border-radius: 5px;
     padding: 10px 30px;
     margin-top: 20px; 
@@ -312,14 +317,14 @@ form input:focus, textarea:focus {
     width: 200px;
     cursor: pointer;
     text-align: center;
-    border: 2px solid rgb(182, 135, 17);
+    border: 2px solid var(--amarillo);
     transition: all 0.3s ease;
     line-height: 10px;
 }
 
 [type="submit"]:hover {
-    color:rgb(182, 135, 17);
-    background-color: white;
+    color:var(--amarillo);
+    background-color: var(--blanco);
 }
 
 /* Footer */
@@ -328,9 +333,9 @@ form input:focus, textarea:focus {
     padding: 30px;
     display: flex;
     justify-content: space-around;
-    background-color: black;
-    color:white;
-    font-family:'Ubuntu', 'sans-serif';
+    background-color: var(--negro);
+    color:var(--blanco);
+    font-family:var(--Ubuntu);
     margin-top: 80px;
 }
 
@@ -342,12 +347,12 @@ form input:focus, textarea:focus {
 
 .footer__lista i {
     font-size: 20px;
-    color: white;
+    color: var(--blanco);
     transition: all 0.3s ease;
 }
 
 .footer__lista i:hover {
-    color: rgb(182, 135, 17);
+    color: var(--amarillo);
 }
 
 /* Estilos para el Botón Scroll */
@@ -355,12 +360,12 @@ form input:focus, textarea:focus {
     position: fixed;
     height: 45px;
     width: 42px;
-    background: rgb(182, 135, 17);
+    background: var(--amarillo);
     right: 30px;
     bottom: 10px;
     text-align: center;
     line-height: 45px;
-    color: #fff;
+    color: var(--blanco);
     z-index: 999;
     font-size: 30px;
     border-radius: 6px;
@@ -387,7 +392,7 @@ form input:focus, textarea:focus {
 .titulobio {
     text-align: center;
     padding: 15px 0;
-    font-family:'Ubuntu', 'sans-serif';
+    font-family:var(--Ubuntu);
 }
 
 .blog section {
@@ -403,7 +408,7 @@ form input:focus, textarea:focus {
 .blog__derecha {
     width: 65%;
     padding: 0px 50px;
-    font-family: 'Poppins', 'sans-serif';
+    font-family: var(--Poppins);
     display: flex;
     flex-direction: column;
     gap: 40px;
@@ -417,9 +422,9 @@ form input:focus, textarea:focus {
     justify-content: space-around;
     align-items: center;
     width: 100vw;
-    background-color: black;
+    background-color: var(--negro);
     padding: 15px 0px;
-    font-family:'Ubuntu', 'sans-serif';
+    font-family:var(--Ubuntu);
     z-index: 999;
 }
 
@@ -496,7 +501,7 @@ form input:focus, textarea:focus {
         width: 100%;
         left: -100%;
         top: 0;
-        background-color: black;
+        background-color: var(--negro);
         text-align: center;
         padding-top: 60px;
         transition: all 0.3s ease;

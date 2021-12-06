@@ -16,3 +16,8 @@ const ovejasFiltradas = contarOvejas(ovejas)
 console.log(ovejasFiltradas)
 
 // Adviento 2
+var a;
+console.log(a)
+
+
+console.log(b)
