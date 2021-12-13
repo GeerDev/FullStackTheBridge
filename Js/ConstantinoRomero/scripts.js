@@ -58,25 +58,30 @@ function imprimeTodasLasRespuestas(pregunta) {
     // console.log (bucle[i])
     respuesta = bucle[i];
     // console.log(respuesta);
-    resultadoFinal = imprimeUnaRespuesta(respuesta);
+    resultadoFinal += imprimeUnaRespuesta(respuesta);
   }
-  return `Este es el resultado ${resultadoFinal}`
+  console.log(resultadoFinal);
+  return `${resultadoFinal}`
 }
 
 function imprimeUnaRespuesta(respuesta) {
   // console.log (respuesta);
   const guardalo1 = imprimeLabel(respuesta);
+  // console.log (guardalo1);
   const guardalo2 = imprimeInput(respuesta);
-  return `ole ${guardalo1} ole ${guardalo2}`
+  // console.log (guardalo2);
+  return `<p> ${guardalo1}${guardalo2} </p>`
 }
 
 function imprimeLabel(respuesta) {
   // console.log (respuesta.id);
-  return `Hola estoy saludando desde el Label`
+  const {label, id} = respuesta;
+  return `<label for = "${id}">${label}</label>`
 }
 
 function imprimeInput(respuesta) {
-  return `Hola estoy saludando desde el Input`
+  const {id, name, value} = respuesta;
+  return `<input id = "${id}" name = "${name}" type = "radio" value = "${value}">`
 }
 
 document.getElementById("contenedorPreguntas").innerHTML = imprimePregunta(pregunta);
