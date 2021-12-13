@@ -44,7 +44,7 @@ function imprimePregunta(pregunta) {
 }
 
 function imprimeTitulo(pregunta) {
-  return `<p>${pregunta.titulo}</p>`
+  return `<p>${pregunta.titulo}</p>`;
 }
 
 function imprimeTodasLasRespuestas(pregunta) {
@@ -61,7 +61,7 @@ function imprimeTodasLasRespuestas(pregunta) {
     resultadoFinal += imprimeUnaRespuesta(respuesta);
   }
   console.log(resultadoFinal);
-  return `${resultadoFinal}`
+  return `${resultadoFinal}`;
 }
 
 function imprimeUnaRespuesta(respuesta) {
@@ -70,18 +70,18 @@ function imprimeUnaRespuesta(respuesta) {
   // console.log (guardalo1);
   const guardalo2 = imprimeInput(respuesta);
   // console.log (guardalo2);
-  return `<p> ${guardalo1}${guardalo2} </p>`
+  return `<p> ${guardalo1}${guardalo2} </p>`;
 }
 
 function imprimeLabel(respuesta) {
   // console.log (respuesta.id);
   const {label, id} = respuesta;
-  return `<label for = "${id}">${label}</label>`
+  return `<label for = "${id}">${label}</label>`;
 }
 
 function imprimeInput(respuesta) {
   const {id, name, value} = respuesta;
-  return `<input id = "${id}" name = "${name}" type = "radio" value = "${value}">`
+  return `<input id = "${id}" name = "${name}" type = "radio" value = "${value}">`;
 }
 
 document.getElementById("contenedorPreguntas").innerHTML = imprimePregunta(pregunta);
