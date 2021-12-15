@@ -70,7 +70,7 @@ function imprimeUnaRespuesta(respuesta) {
   // console.log (guardalo1);
   const guardalo2 = imprimeInput(respuesta);
   // console.log (guardalo2);
-  return `<p> ${guardalo1}${guardalo2} </p>`;
+  return `<p> ${guardalo1} ${guardalo2} </p>`;
 }
 
 function imprimeLabel(respuesta) {
