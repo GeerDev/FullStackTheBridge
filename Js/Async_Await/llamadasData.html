@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>La gran batalla</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Mi grupo de FS Valencia. ASEREJÉ">
+    <meta name="description" content="la batalla"> 
+    <style>
+      #battle {
+        display: flex; 
+      }
+      .battle div img {
+        max-width: 100px;
+      }
+    </style>
+</head>
+<body>
+  <div id="battle"></div>    
+  <script>
+    const random = (min, max) => Math.floor(Math.random() * (max - min)) + min;
+    
+    const getPokemon = async () => {
+      const urlPokemon = `https://pokeapi.co/api/v2/pokemon/${random(0, 900)}`
+      const response = await fetch(urlPokemon)
+      const data = await response.json()
+      const {name,sprites} = data
+      const pokemon = {
+        name,
+        image: sprites.front_default
+      }
+      return pokemon
+    }
+    const getPoppi =  async () => {
+      const urlPoppi = "https://dog.ceo/api/breeds/image/random"
+      const response = await fetch(urlPoppi)
+      const data = await response.json()
+      const {message} = data
+      const name = message.split("/")[4]
+      const poppi = {
+        name,
+        image: message
+      }
+      return poppi
+    }
+      const battle = async () => {
+      const pokemon = await getPokemon().then()
+      const poppi = await getPoppi().then()
+      return document.getElementById("battle").innerHTML = `
+        <div>
+          <h2>${pokemon.name}</h2>
+          <img src="${pokemon.image}" />
+        </div>
+        <div>
+          <h2>${poppi.name}</h2>
+          <img src="${poppi.image}" />
+        </div>  
+      `
+    }
+    battle().then()
+  </script>
+</body>
+</html>
