@@ -43,7 +43,7 @@ label {
 }
 
 input[type='radio'] {
-    display: none;
+    /* display: none; */
 }
 
 button[type='submit'] {

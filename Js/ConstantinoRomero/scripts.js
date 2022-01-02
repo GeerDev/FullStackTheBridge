@@ -34,11 +34,14 @@ const pregunta = {
     ]
 }
 
-function imprimePregunta(pregunta) {
+function imprimePregunta(xxx) {
   let newHTML = "";
 
-  newHTML += imprimeTitulo(pregunta);
-  newHTML += imprimeTodasLasRespuestas(pregunta);
+  newHTML += imprimeTitulo(xxx);
+  newHTML += imprimeTodasLasRespuestas(xxx);
+
+  console.log (xxx)
+  console.log (pregunta)
 
   return newHTML;
 }

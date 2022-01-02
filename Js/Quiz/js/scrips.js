@@ -1,40 +1,79 @@
 const respuestas = {
-    firstQuestion: "Inca",
-    secondQuestion: "Budapest",
-    thirdQuestion: "Suiza",
-    fourthQuestion: 1997,
-    fifthQuestion: "Harry Potter",
+    primera: "C",
+    segunda: "A",
+    tercera: "D",
 }
-    const v = document.querySelectorAll('input[name="firstQuestion"]');
-    const w = document.querySelectorAll('input[name="secondQuestion"]');
-    const x = document.querySelectorAll('input[name="thirdQuestion"]');
-    const y = document.querySelectorAll('input[name="fourthQuestion"]');
-    const z = document.querySelectorAll('input[name="fifthQuestion"]');
 
-    // console.log("lo primero", x)
+    // Referencias al DOM
+    const primeraPregunta = document.querySelectorAll('input[name="primeraPregunta"]');
+    const segundaPregunta = document.querySelectorAll('input[name="segundaPregunta"]');
+    const terceraPregunta = document.querySelectorAll('input[name="terceraPregunta"]');
 
+    const botonSubmit = document.getElementById("sendbuttom");
 
-    const botonsubmit = document.getElementById("sendbuttom");
+    // Arreglo con todos los bloques de preguntas
+    const Arreglo = [primeraPregunta, segundaPregunta, terceraPregunta];
 
-    console.log(botonsubmit)
+    // Escuchadores para seleccionar una opción
+    for (let i = 0; i < Arreglo.length; i++) {
+        Arreglo[i].forEach (e => {
+            e.addEventListener ("click", () => {    
+                    e.parentElement.style.background = "white"
+            })
+        })
+    }
 
-    const Arreglo = [v, w, x, y, z];
+    for (let i = 0; i < Arreglo.length; i++) {
+        Arreglo[i].forEach (e => {
+            e.addEventListener ("blur", () => {    
+                    e.parentElement.style.background = "red"
+            })
+        })
+    }
 
-
-  botonsubmit.addEventListener("click", e => {
+    // Efectos al presionar el boton de "Comprobar datos"
+    botonSubmit.addEventListener("click", e => {
       e.preventDefault();
+      
+      // Recogemos los valores y montamos un array con ellos
       let valores = [];
+      
       for (let i = 0; i < Arreglo.length; i++) {
-        Arreglo[i].forEach(radio=>{
+        Arreglo[i].forEach(radio => {
             if (radio.checked) {
             const valor = radio.value;
-            valores.push(valor)
-            // console.log(valor)
+            valores.push(valor);
             }
-            else {
-              alert("Name must be filled out")
-            };
-          })
+        })
       }
-      console.log(valores);
-  })
+
+      // Validación todos los campos contestados
+      if (valores.length === Object.keys(respuestas).length) {
+          // Condiciones para saber si el valor es el correcto o es erroneo
+            for (let i = 0; i < valores.length; i++) {
+                if (valores[i] === Object.values(respuestas)[i]) {
+                    // Condicion de pintar en verde
+                    Arreglo[i].forEach(element => {
+                        if (element.value === valores[i]) {
+                            element.parentElement.style.background = "green"
+                        } else {
+                            element.parentElement.style.background = "red"
+                        }
+                    })
+                } else {
+                    // Condicion de pintar en rojo
+                    Arreglo[i].forEach(element => {
+                        if (element.checked) {
+                            element.parentElement.style.background = "blue"
+                        } else {
+                            element.parentElement.style.background = "red"
+                        }
+                    })
+                }
+            }
+      } else {
+          // En el caso de no estar todos los campos rellenos, mostrar alarma
+          alert ("Donde vas chaval rellena el formulario completo")
+      }
+
+    })
