@@ -1,0 +1,5 @@
+#contenedor {
+    display: flex;
+    margin: 20px 100px;
+    justify-content: center;
+}
