@@ -56,17 +56,26 @@ const ACCESS_TOKEN =
 
 // Vamos a ver vuelos en tiempo real en un mapa
 // Crack solo tienes 100 peticiones a esta API jaja usalas con cabeza jaja
-// let elemento = []
-// fetch('http://api.aviationstack.com/v1/flights?access_key=e22e08c6c3fdd8c964fad37dbb48b7c1')
-//   .then(response => response.json())
-//   .then(datos => {
-//     const { data } = datos
-//     data.forEach(dato => {
-//       if (dato.live !== null){
-//         const { live } = dato
-//         const { latitude, longitude } = live
-//         elemento.push([latitude, longitude]) 
-//       }
-//     })
-//     console.log (elemento)
-//   });
+let elemento = []
+let identi = []
+fetch('http://api.aviationstack.com/v1/flights?access_key=e22e08c6c3fdd8c964fad37dbb48b7c1')
+  .then(response => response.json())
+  .then(datos => {
+    const { data } = datos
+    data.forEach(dato => {
+      if (dato.live !== null){
+        const { live, flight } = dato
+        const { latitude, longitude } = live
+        elemento.push([latitude, longitude]) 
+        identi.push(flight)
+      }
+    })
+    console.log (elemento)
+    for (let i = 0; i < elemento.length; i++) {
+      let coordenadasAvion = elemento[i];
+      console.log(coordenadasAvion)
+      L.marker(coordenadasAvion).bindPopup(`<b>Vuelo con numero ${identi[i].number}</b>`).addTo(map);
+    }
+  });
+
+  //
