@@ -1,0 +1,15 @@
+Trabajo en equipo utilizando GitHub:
+    - Utilización de Fork -> Te copias un repositorio en Github y apartir de aquí te lo clonas para trabajar.
+    - PR -> Pull Request -> Una propuesta para implementar código en un proyecto
+    - Los colaboradores los puedes agregar tú a tus propios repositorios -> Ojo que pueden aceptar o denegar PR's (incluso las suyas)
+    - Las PR's se tienen que aceptar o denegar
+    - El repositorio al detectar "fork" o "presencia de colaboraciones" al hacer "push" directamente te da la opcion de hacer una PR en la mayoria de casos
+    - Es buena práctica crear una rama aparte para hacer los cambios y subir la rama completa
+    - 
+    
+
+
+    Para hacer las cosas bien:
+    - Si tiene un archivo dedicado a las "contribuciones" leerlo para ver como puedes hacer las propuestas de código
+      (Intentar hacer un trabajo parecido a lo que este en el repositorio)
+      (Añadir algun campo con imagenes o mirar si existe alguna issue donde pidan los cambios a realizar)
