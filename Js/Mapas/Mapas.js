@@ -78,4 +78,6 @@ fetch('http://api.aviationstack.com/v1/flights?access_key=e22e08c6c3fdd8c964fad3
     }
   });
 
-  //
+  // Crack hay que empezar a manejar los errores para el buen funcionamiento del programa .catch o un try/catch en funciones asíncronas
+  // Vamos a empezar a utilizar mas el .map para jugar con la inmutabilidad y sintetizar los bucles y crear variables nuevas
+  // Si pudieramos hacer el ejercicio bien utilizariamos un serInterval() para llamar a la funcion cada x tiempo

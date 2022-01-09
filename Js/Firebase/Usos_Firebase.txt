@@ -1,0 +1,23 @@
+Que es Firebase? 
+
+- Firebase te ofrece un Back-End junto a una base de datos noSQL
+- Te ahorra toda la faena de montarte tu un Back-End por tu cuenta
+- La personalización de las funcionalidades es la que Firebase quiera.
+
+Para que podemos utilizar Firebase?
+
+- Cloud Firestore -> Base de datos flexible, escalable y en tiempo real (uso de notificaciones en tiempo real)
+- Ofrece servicio de Hosting
+- Tienes todas las funcionalidades preparadas para usar autenticación en tus proyectos
+- Cloud Storage -> Gran almacen para videos e imagenes y cualquier componente audiovisual
+- Cloud Functions -> Puedes ejecutar codigo Javascript en el Back-End (NodeJS)
+- Crash reporting -> Tiene un seguimiento de errores muy detallado
+- Test Lab -> Tiene un laboratorio de pruebas para testear la aplicacion
+- Remote config -> Haz cambios sin tener que actualizar la aplicación
+- Puedes indexar los servicios de toda la vida de Google al estar utilizando productos suyos
+- Dynamic Links -> Puedes redirigir la información utilizando parámetros de la URL, una experiencia del usuario más agradable (referidos)
+- Adwords -> Campañas de publicidad (AdMob)
+- Tiene un sistema propio de analíticas para todo el seguimiento de la aplicación
+- Posibilidad de agregar un chat
+
+
