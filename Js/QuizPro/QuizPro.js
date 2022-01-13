@@ -34,8 +34,6 @@ async function getQuestionsAsync() {
 
 getQuestionsAsync().then(data => {
 
-    funcionDePrueba(data[0])
-
     boton.addEventListener("click", () => {
 
         elegirCorrecta(data)
@@ -72,6 +70,12 @@ getQuestionsAsync().then(data => {
       boton.innerText = "Avance"
     }
 
+    const volverEmpezar = () => {
+        PantallaActual = 0
+        pantallaPrincipal()
+        location.reload()
+      }
+
     const pantallaFinal = () => { 
       graficaFinal.style.display = "block" 
       cargarGrafica()
@@ -83,11 +87,7 @@ getQuestionsAsync().then(data => {
       guardarLocalStorage()
     }
 
-    const volverEmpezar = () => {
-      PantallaActual = 0
-      pantallaPrincipal()
-      location.reload()
-    }
+
 
     const guardarLocalStorage = () => {
       const date = new Date();    
@@ -136,10 +136,6 @@ const elegirCorrecta = (data) => {
           } 
       }
   })
-}
-
-const funcionDePrueba = (datosDeAsincronia) => {
-  console.log (datosDeAsincronia)
 }
 
 pantallaPrincipal()

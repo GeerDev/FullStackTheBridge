@@ -1,0 +1,74 @@
+1.2.1 INSERTAR DATOS
+
+⦁ Inserte al menos 15 nuevos empleados:
+⦁ Con sueldos que oscilan entre un rango de 5.000 y 50.000 de diferente género
+⦁ Mañana 5 empleados son gerentes
+⦁ Al menos 3 empleados tienen el mismo nombre
+
+- Creamos las columnas de los neuvos campos que vamos a necesitar
+ALTER TABLE employees.employees ADD sueldo INT;
+ALTER TABLE employees.employees ADD gerente boolean;
+ALTER TABLE employees.employees ADD titulo VARCHAR(40);
+ALTER TABLE employees.employees ADD titulo_fecha date;
+
+- Insertamos datos cumpliendo las condiciones que nos piden
+INSERT INTO employees.employees (emp_no, birth_date, first_name, last_name, gender, hire_date, sueldo, gerente, titulo, titulo_fecha) values 
+(1, '1990-09-19', 'Sofia', 'Ariza', 'F', now(), 45000, 0, 'administrador', '1990-12-17'), 
+(2, '1990-09-17', 'Sofia', 'Pinilla', 'F', now(), 45000, 1, 'vendedor', '1990-09-17'), 
+(3, '1998-07-17', 'Ivan', 'Garcia', 'M', now(), 49000, 1, 'comprador', '1994-09-17'), 
+(4, '2021-07-17', 'Bonsi', 'Lopez', 'M', now(), 41000, 0, 'vendedor', '1999-09-17'),
+(5, '2021-08-17', 'Sofia', 'Lopez', 'F', now(), 42000, 0, 'administrador', '2020-09-17'),
+(6, '2047-07-17', 'Alvaro', 'Martinez', 'M', now(), 43000, 1, 'comprador', '2020-09-17'),
+(7, '2021-12-17', 'Carlos', 'Carrascosa', 'M', now(), 27000, 0, 'comprador', '2020-09-17'),
+(8, '2037-07-17', 'Laura', 'Martinez', 'F', now(), 29000, 1, 'cliente', '2020-09-17'),
+(9, '2021-12-17', 'Maria', 'Perez', 'F', now(), 13000, 0, 'cliente', '2020-09-17'),
+(10, '2099-2-17', 'Sofia', 'Salvador', 'F', now(), 44000, 1, 'administrador', '2029-09-17');
+
+
+1.2.2 ACTUALIZAR DATOS
+
+⦁ Actualizar a los empleados:
+⦁ Cambiar el nombre de un empleado. Para ello, genere una consulta que afecte solo a un determinado empleado en función de su nombre, apellido y fecha de nacimiento.
+UPDATE employees.employees SET first_name = 'Paquito' WHERE (emp_no = 7) AND (first_name = 'Carlos') AND (last_name = 'Carrascosa') AND (birth_date = '2021-12-17');
+
+
+⦁ Actualizar departamentos:
+INSERT INTO employees.departments (dept_no, dept_name) values 
+(1, 'Azul'),
+(2, 'Amarillo'),
+(3, 'Rojo'),
+(4, 'Negro');
+
+⦁ Cambiar el nombre del departamento con id = 3.
+UPDATE employees.departments SET dept_name = 'Arcoiris' WHERE dept_no = 3;
+
+1.2.3 OBTENER DATOS
+
+⦁ Seleccione todos los empleados con un salario superior a 20.000
+SELECT * FROM employees.employees WHERE sueldo > 20000;
+
+⦁ Seleccione todos los empleados con un salario inferior a 10,000
+SELECT * FROM employees.employees WHERE sueldo < 10000;
+
+⦁ Seleccione todos los empleados que tengan un salario entre 14,00 y 50.000
+SELECT * FROM employees.employees WHERE sueldo BETWEEN 14 AND 25000;
+
+⦁ Seleccione el número total de empleados
+SELECT COUNT(emp_no) FROM employees.employees;
+
+⦁ Selecciona los títulos del año 2019 ( He cogido 2020 ya que no tengo ninguno de 2019 )
+SELECT * FROM employees.employees WHERE titulo_fecha LIKE '2020%';
+
+⦁ Seleccione solo el nombre de los empleados en mayúsculas
+SELECT UCASE(first_name) FROM employees.employees;
+
+⦁ Seleccionar el nombre de los empleados sin que se repita ninguno
+SELECT DISTINCT first_name FROM employees.employees;
+
+1.2.4 BORRAR DATOS
+
+⦁ Elimina el empleado con id = 5
+DELETE FROM employees.employees WHERE emp_no = 5;
+
+⦁ Eliminar a todos los empleados con un salario superior a 20.000
+DELETE FROM employees.employees WHERE sueldo > 20000;

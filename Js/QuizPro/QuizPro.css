@@ -1,4 +1,32 @@
+/* Resetear estilos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+/* Variables globales */
+:root {
+    --color-correct: green;
+    --color-incorrect: red;
+  }
+
+/* Estilos globales */
+.pantalla {
+    display: flex;
+
+}
+
+/* Estilos de cada sección */
+
 .ct-chart, .ct-chart2 {
     height: 400px;
     width: 400px;
 }
+
+
+/* Responsive */
+ @media (max-width: 1104px) {
+ }
+
