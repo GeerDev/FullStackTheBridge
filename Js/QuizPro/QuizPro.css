@@ -84,7 +84,7 @@ body {
     width: 250px;
     height: 80px;
     display: flex;
-    margin: 20px 15px;
+    margin: 10px 15px;
     background-color: #074566;
 }
 
@@ -160,6 +160,10 @@ input[type='radio'] {
     .container_p {
         font-size: 30px;
     }
+
+    #score {
+        font-size: 20px;
+    }    
 
     #advance {
         padding: 5px 15px;
