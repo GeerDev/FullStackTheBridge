@@ -1,7 +1,9 @@
+----- Creación de la base de datos -----
 /*
 CREATE DATABASE Ecommerce;
 */
 
+----- Creación de las tablas -----
 /*
 CREATE TABLE ecommerce.users(
 id INT AUTO_INCREMENT,
@@ -52,11 +54,13 @@ FOREIGN KEY(order_id) REFERENCES ecommerce.orders(id)
 );
 */
 
+----- Arreglando algunos errores que he cometido creando las tablas -----
 /*
 ALTER TABLE ecommerce.users MODIFY COLUMN phone INT;
 ALTER TABLE ecommerce.users MODIFY COLUMN last_name VARCHAR(45);
 ALTER TABLE ecommerce.products MODIFY COLUMN price float;
 
+----- Insertando valores a todas las tablas -----
 INSERT INTO ecommerce.users (first_name, last_name, phone) values
 	('German', 'Fernandez', 654321987),
     ('Miguel', 'Martinez', 632749502),
@@ -81,7 +85,8 @@ INSERT INTO ecommerce.orders (fecha, user_id) values
 INSERT INTO ecommerce.categories (name_category, _description) values
 	('Primera Categoria', 'JAJA Esta es la primera categoría'),
     ('Segunda Categoria', 'JAJA Esta es la segunda categoría');
-    
+
+----- Tambien a las tablas intermedias de las relaciones muchos a muchos -----
 INSERT INTO ecommerce.productoscategorias (product_id, category_id) values
 	(1, 1),
     (2, 1),
@@ -97,11 +102,13 @@ INSERT INTO ecommerce.pedidosproductos (order_id, product_id) values
     (5, 1);
 */
 
+----- Actualizando valores de la tabla Products -----
 /*
 UPDATE ecommerce.products SET name_product = 'Producto Actualizado' WHERE id = 4;
 UPDATE ecommerce.products SET price = '50' WHERE id = 4;
 */
 
+----- Obteniendo datos -----
 /*
 SELECT * FROM ecommerce.products where price > 20;
 SELECT * FROM ecommerce.products order by id desc;
@@ -120,19 +127,24 @@ WHERE products.id = 4;
 SELECT * FROM ecommerce.users INNER JOIN ecommerce.orders ON users.id = orders.user_id WHERE users.id = 2;
 */
 
+----- Borrando un producto por id (Ojo cuidado con las claves ajenas cuanto intentas borrar campos) -----
 /*
-DELETE FROM ecommerce.pedidosproductos WHERE product_id_FK = 1;
+DELETE FROM ecommerce.pedidosproductos WHERE product_id_FK = 1; (Al final toca borrar a mano el id de la relacion)
 DELETE FROM ecommerce.products WHERE id = 1;
 
+(Modo delete cascade: al borrar el id de producto directamente se carga los datos asociados a él en esta tabla)
 ALTER TABLE ecommerce.productoscategorias ADD CONSTRAINT product_id 
 FOREIGN KEY (product_id) REFERENCES ecommerce.products(id) ON DELETE CASCADE;
 
+(Por desgracia no nos deja poner modo delete cascade a claves ajenas que se llamen igual, así que le cambiamos
+el nombre y se lo asignamos, lastima que en este caso no me funcione y me toque borrar el de esta tabla manualmente)
 SHOW CREATE TABLE ecommerce.pedidosproductos;
 ALTER TABLE ecommerce.pedidosproductos CHANGE product_id product_id_FK INT;
 ALTER TABLE ecommerce.pedidosproductos ADD CONSTRAINT product_id_FK 
 FOREIGN KEY (product_id_FK) REFERENCES ecommerce.products(id) ON DELETE CASCADE;
 */
 
+----- Creación de la tabla Reviews (Contenido Extra) -----
 CREATE TABLE ecommerce.reviews(
 id INT AUTO_INCREMENT,
 title VARCHAR(45),
@@ -142,15 +154,18 @@ PRIMARY KEY(id),
 FOREIGN KEY(products_id) REFERENCES ecommerce.products(id)
 );
 
+----- Insertamos valores -----
 INSERT INTO ecommerce.reviews (title, _text, products_id) values
 	('review 1', 'Holi jaja soy la review 1 jaja', 3),
     ('review 2', 'Holi jaja soy la review 2 jaja', 3),
     ('review 3', 'Holi jaja soy la review 3 jaja', 4),
     ('review 4', 'Holi jaja soy la review 4 jaja', 5),
     ('review 5', 'Holi jaja soy la review 5 jaja', 5);
-    
+
+----- Actualizamos algun valor -----
 UPDATE ecommerce.reviews SET _text = 'Holi ahora soy el contenido actualizado' WHERE id = 5;
 
+----- Obtenemos valores, guardar como ejemplo Inner Join en relaciones muchos a muchos -----
 SELECT * FROM ecommerce.reviews;
 SELECT name_product, _text FROM ecommerce.products INNER JOIN ecommerce.reviews ON products.id = reviews.products_id;
 SELECT name_product, _text FROM ecommerce.products INNER JOIN ecommerce.reviews ON products.id = reviews.products_id WHERE products.id = 3;
@@ -166,4 +181,5 @@ INNER JOIN ecommerce.pedidosproductos ON orders.id = pedidosproductos.order_id
 INNER JOIN ecommerce.products ON pedidosproductos.order_id = products.id
 WHERE users.first_name = 'Roberto';
 
+----- Borrando una review por id -----
 DELETE FROM ecommerce.reviews WHERE id = 2;
