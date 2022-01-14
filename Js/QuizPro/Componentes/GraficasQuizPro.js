@@ -1,12 +1,12 @@
-import { PantallaActual, puntuacion} from "../QuizPro.js";
+import { Screen, score, graficaIni} from "../QuizPro.js";
 export const cargarLocalStorageYPintarGrafica = () => {
 
     const puntuaciones = JSON.parse(localStorage.getItem('resultados')) || [];
-    const grafPunt = puntuaciones.map(e => e.puntuacion)
+    const grafPunt = puntuaciones.map(e => e.score)
     const grafFecha = puntuaciones.map(e => e.fecha)
 
     if (puntuaciones.length === 0) {
-        graficaIni.innerHTML = ``
+        graficaIni.style.display = "none"
     } else {
         var chart = new Chartist.Line('.ct-chart', {
             labels: grafFecha,
@@ -135,13 +135,14 @@ export const cargarLocalStorageYPintarGrafica = () => {
 }
 
 export const cargarGrafica = () => {
-    let respuestasIncorrectas = PantallaActual - puntuacion
+    let respuestasIncorrectas = Screen - score
     var chart = new Chartist.Pie('.ct-chart2', {
-        series: [puntuacion, respuestasIncorrectas ],
-        labels: [`Correctas: ${puntuacion}`, `Incorrectas: ${respuestasIncorrectas}`]
+        series: [score, respuestasIncorrectas ],
+        labels: [`Bien: ${score}`, `Mal: ${respuestasIncorrectas}`]
       }, {
         donut: true,
-        showLabel: true
+        showLabel: true,
+        donutWidth: 80
       });
       
       chart.on('draw', function(data) {

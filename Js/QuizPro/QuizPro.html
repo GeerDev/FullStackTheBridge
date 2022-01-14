@@ -5,24 +5,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Funcionalidades para las gráficas -->
+    <!-- Graphic functionalities -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
     <script src="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+
+    <!-- Axios -->
+    <script defer src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
     <script type="module" defer src="QuizPro.js"></script>
     <link rel="stylesheet" href="QuizPro.css">
     <title>Quiz Pro</title>
 </head>
 <body>
-    <!-- <audio src=""></audio> -->
+    <main id="main">
+        <!-- Main content -->
+        <form id="container">
 
-    <form id="container">
-        
-    </form>
-    <div id="puntuacion"></div>
-    <button id="avanzar"></button>
-    <div class="ct-chart ct-perfect-fourth" id="graficaInicial"></div>
-    <div class="ct-chart2 ct-perfect-fourth" id="graficaFinal"></div>
+        </form>
     
+        <button id="advance"></button>
+        <span id="score"></span>
+       
+        <!-- Graphics -->
+        <div class="ct-chart ct-perfect-fourth" id="graphInitial"></div>
+        <div class="ct-chart2 ct-perfect-fourth" id="graphFinal"></div>
+    </main>
 </body>
 </html>

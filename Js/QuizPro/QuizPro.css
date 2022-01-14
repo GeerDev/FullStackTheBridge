@@ -1,4 +1,7 @@
-/* Resetear estilos */
+/* Imports Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+
+/* Reset styles */
 * {
     margin: 0;
     padding: 0;
@@ -6,27 +9,172 @@
     text-decoration: none;
 }
 
-/* Variables globales */
+/* Global variables */
 :root {
-    --color-correct: green;
-    --color-incorrect: red;
+    --Dancing: 'Dancing Script', 'sans-serif';
   }
 
-/* Estilos globales */
-.pantalla {
+/* Styles */
+/* Main container - First and Last Screen */
+body {
     display: flex;
-
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: #C2DFEF;
+    font-family: var(--Dancing);
 }
 
-/* Estilos de cada sección */
+#main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 800px;
+    height: 720px;
+    background-color: white;
+    border: 1px solid #000;
+    border-radius: 20px;
+}
 
+#container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container_p {
+    font-size: 60px;
+    font-weight: 700;
+    margin-top: 10px;
+}
+
+#advance {
+    background-color: #0B80C1;
+    border: none;
+    color: white;
+    padding: 10px 25px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 25px;
+    border-radius: 15px;
+}
+
+.container_advance {
+    background-color: rgb(180, 66, 66);
+    border: none;
+    color: white;
+    padding: 15px 35px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 25px;
+    border-radius: 15px;
+    width: 60%;
+    margin: 30px 0px;
+}
+
+/* Quiz questions-answers */
+.cuestionario {
+    margin:5px 0px;
+}
+
+.elemento {
+    width: 250px;
+    height: 80px;
+    display: flex;
+    margin: 20px 15px;
+    background-color: #074566;
+}
+
+label {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    text-align: center;
+}
+
+.question_p {
+    font-size: 30px;
+    font-weight: 700;
+    margin: 10px 10px 0px 10px;
+    text-align: center;
+}
+
+#score {
+    font-size: 30px;
+}
+
+input[type='radio'] {
+    opacity: 0;
+}
+
+/* Graphics */
 .ct-chart, .ct-chart2 {
     height: 400px;
     width: 400px;
 }
 
+.ct-chart2 .ct-label {
+    font-size: 23px;
+    color: black;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bold;
+}
 
 /* Responsive */
- @media (max-width: 1104px) {
+ @media (max-width: 800px) {
+    #main {
+        width: 650px;
+    }
+    .container_p {
+        font-size: 40px;
+    }
  }
 
+ @media (max-width: 600px) {
+    #main {
+        width: 500px;
+    }
+
+    #advance {
+        padding: 8px 22px;
+        font-size: 20px;
+        border-radius: 12px;
+    }
+    
+    .container_advance {
+        padding: 8px 22px;
+        font-size: 20px;
+        border-radius: 12px;
+    }
+ }
+
+ @media (max-width: 450px) {
+    #main {
+        width: 350px;
+    }
+    .container_p {
+        font-size: 30px;
+    }
+
+    #advance {
+        padding: 5px 15px;
+        font-size: 15px;
+        border-radius: 10px;
+    }
+    
+    .container_advance {
+        padding: 5px 20px;
+        font-size: 15px;
+        border-radius: 10px;
+    }
+
+    .ct-chart, .ct-chart2 {
+        height: 300px;
+        width: 300px;
+    }
+}
