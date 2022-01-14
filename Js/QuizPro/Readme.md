@@ -15,7 +15,7 @@ _Mi aplicación web simulando un Quiz donde se pueden contestar a unas preguntas
 
 ## Preview 🚀
 
-![foto](./Imagenes_Proyecto/PantallaPrincipalQuiz.PNG) 
+![foto](./Imagenes_Proyecto/PantallaPrincipalQuiz.png) 
 
 ---
 Hecho por [Germán Fernández](https://github.com/GeerDev) 😊 
