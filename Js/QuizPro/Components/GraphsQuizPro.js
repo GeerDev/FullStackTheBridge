@@ -1,47 +1,39 @@
-import { Screen, score, graficaIni} from "../QuizPro.js";
-export const cargarLocalStorageYPintarGrafica = () => {
+import { Screen, score, graphIni} from "../QuizPro.js";
+export const loadLocalStorageAndPaintGraph = () => {
 
-    const puntuaciones = JSON.parse(localStorage.getItem('resultados')) || [];
-    const grafPunt = puntuaciones.map(e => e.score)
-    const grafFecha = puntuaciones.map(e => e.fecha)
+    const scores = JSON.parse(localStorage.getItem('results')) || [];
+    const grafScore = scores.map(e => e.score)
+    const grafDate = scores.map(e => e.date)
 
-    if (puntuaciones.length === 0) {
-        graficaIni.style.display = "none"
+    if (scores.length === 0) {
+        graphIni.style.display = "none"
     } else {
         var chart = new Chartist.Line('.ct-chart', {
-            labels: grafFecha,
+            labels: grafDate,
             series: [
-              grafPunt
+              grafScore
             ]
           }, {
             low: 0
           });
           
-          // Let's put a sequence number aside so we can use it in the event callbacks
           var seq = 0,
             delays = 80,
             durations = 500;
           
-          // Once the chart is fully created we reset the sequence
           chart.on('created', function() {
             seq = 0;
           });
           
-          // On each drawn element by Chartist we use the Chartist.Svg API to trigger SMIL animations
           chart.on('draw', function(data) {
             seq++;
           
             if(data.type === 'line') {
-              // If the drawn element is a line we do a simple opacity fade in. This could also be achieved using CSS3 animations.
               data.element.animate({
                 opacity: {
-                  // The delay when we like to start the animation
                   begin: seq * delays + 1000,
-                  // Duration of the animation
                   dur: durations,
-                  // The value where the animation should start
                   from: 0,
-                  // The value where it should end
                   to: 1
                 }
               });
@@ -52,7 +44,6 @@ export const cargarLocalStorageYPintarGrafica = () => {
                   dur: durations,
                   from: data.y + 100,
                   to: data.y,
-                  // We can specify an easing function from Chartist.Svg.Easing
                   easing: 'easeOutQuart'
                 }
               });
@@ -91,7 +82,6 @@ export const cargarLocalStorageYPintarGrafica = () => {
                 }
               });
             } else if(data.type === 'grid') {
-              // Using data.axis we get x or y which we can use to construct our animation definition objects
               var pos1Animation = {
                 begin: seq * delays,
                 dur: durations,
@@ -123,7 +113,6 @@ export const cargarLocalStorageYPintarGrafica = () => {
             }
           });
           
-          // For the sake of the example we update the chart every time it's created with a delay of 10 seconds
           chart.on('created', function() {
             if(window.__exampleAnimateTimeout) {
               clearTimeout(window.__exampleAnimateTimeout);
@@ -134,11 +123,11 @@ export const cargarLocalStorageYPintarGrafica = () => {
     }
 }
 
-export const cargarGrafica = () => {
-    let respuestasIncorrectas = Screen - score
+export const loadGraph = () => {
+    let answers_inc = Screen - score
     var chart = new Chartist.Pie('.ct-chart2', {
-        series: [score, respuestasIncorrectas ],
-        labels: [`Bien: ${score}`, `Mal: ${respuestasIncorrectas}`]
+        series: [score, answers_inc ],
+        labels: [`Good: ${score}`, `Bad: ${answers_inc}`]
       }, {
         donut: true,
         showLabel: true,
@@ -147,15 +136,12 @@ export const cargarGrafica = () => {
       
       chart.on('draw', function(data) {
         if(data.type === 'slice') {
-          // Get the total path length in order to use for dash array animation
           var pathLength = data.element._node.getTotalLength();
       
-          // Set a dasharray that matches the path length as prerequisite to animate dashoffset
           data.element.attr({
             'stroke-dasharray': pathLength + 'px ' + pathLength + 'px'
           });
       
-          // Create animation definition while also assigning an ID to the animation for later sync usage
           var animationDefinition = {
             'stroke-dashoffset': {
               id: 'anim' + data.index,
@@ -163,28 +149,22 @@ export const cargarGrafica = () => {
               from: -pathLength + 'px',
               to:  '0px',
               easing: Chartist.Svg.Easing.easeOutQuint,
-              // We need to use `fill: 'freeze'` otherwise our animation will fall back to initial (not visible)
               fill: 'freeze'
             }
           };
       
-          // If this was not the first slice, we need to time the animation so that it uses the end sync event of the previous animation
           if(data.index !== 0) {
             animationDefinition['stroke-dashoffset'].begin = 'anim' + (data.index - 1) + '.end';
           }
       
-          // We need to set an initial value before the animation starts as we are not in guided mode which would do that for us
           data.element.attr({
             'stroke-dashoffset': -pathLength + 'px'
           });
       
-          // We can't use guided mode as the animations need to rely on setting begin manually
-          // See http://gionkunz.github.io/chartist-js/api-documentation.html#chartistsvg-function-animate
           data.element.animate(animationDefinition, false);
         }
       });
       
-      // For the sake of the example we update the chart every time it's created with a delay of 8 seconds
       chart.on('created', function() {
         if(window.__anim21278907124) {
           clearTimeout(window.__anim21278907124);

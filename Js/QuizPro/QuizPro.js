@@ -1,47 +1,43 @@
-// Imports
-import { cargarLocalStorageYPintarGrafica, cargarGrafica } from "./Componentes/GraficasQuizPro.js";
+import { loadLocalStorageAndPaintGraph, loadGraph } from "./Components/GraphsQuizPro.js";
 
-// Global variables
 export let Screen = 0;
 export let score = 0;
 
-// DOM references
-const referencia = document.querySelector("#container")
-const boton = document.querySelector('#advance')
-const puntua = document.querySelector("#score")
-export const graficaIni = document.getElementById('graphInitial')
-const graficaFinal = document.getElementById('graphFinal')
+const reference = document.querySelector("#container")
+const button = document.querySelector('#advance')
+const play = document.querySelector("#score")
+export const graphIni = document.getElementById('graphInitial')
+const graphEnd = document.getElementById('graphFinal')
 
-// Function declaration
-const pantallaPrincipal = () => {
-    boton.style.display = "block"
-    puntua.style.display = "none"
-    graficaFinal.style.display = "none"
-    boton.innerText = "Empezar Juego"
-    referencia.innerHTML = `<p class = "container_p"> ¡Welcome to the quiz! </p>`
-    cargarLocalStorageYPintarGrafica()
+const mainScreen = () => {
+    button.style.display = "block"
+    play.style.display = "none"
+    graphEnd.style.display = "none"
+    button.innerText = "Start Game"
+    reference.innerHTML = `<p class = "container_p"> ¡Welcome to the quiz! </p>`
+    loadLocalStorageAndPaintGraph()
 }
 
-const cargarPuntuacion = () => {
-    puntua.style.display = "block"
-    puntua.innerHTML = `Tienes estos puntos: ${score}`
+const loadScore = () => {
+    play.style.display = "block"
+    play.innerHTML = `You have these points: ${score}`
   } 
 
-const cargarDatos = (data) => {
-    cargarPuntuacion()
-    graficaIni.style.display = "none"
-    const respuestas = data[Screen].desordenado
-    referencia.innerHTML = `<p class = "question_p">${data[Screen].question}</p>`
-    respuestas.forEach((elem, index) => {
-        referencia.innerHTML += `<div class = cuestionario>
-                                    <p class = elemento>
+const loadData = (data) => {
+    loadScore()
+    graphIni.style.display = "none"
+    const answers = data[Screen].disordered
+    reference.innerHTML = `<p class = "question_p">${data[Screen].question}</p>`
+    answers.forEach((elem, index) => {
+        reference.innerHTML += `<div class = quiz>
+                                    <p class = element>
                                         <label for="${index}">${elem}</label>
                                         <input id="${index}" type="radio" name="bloqueQuiz" value="${elem}">
                                     </p>
                                  </div>`
     })
   
-    boton.innerText = "Siguiente"
+    button.innerText = "Next"
 
     const answersref = document.querySelectorAll('input[name="bloqueQuiz"]');
  
@@ -57,9 +53,8 @@ const cargarDatos = (data) => {
        })
   }
 
-const elegirCorrecta = (data) => {
+const chooseCorrect = (data) => {
     const ref = document.querySelectorAll('input[name="bloqueQuiz"]');
-    console.log(data)
     ref.forEach(valor => {
       if (valor.checked) {
           if (data[Screen - 1].correct_answer === valor.value) {
@@ -69,42 +64,41 @@ const elegirCorrecta = (data) => {
   })
 }
 
-const volverEmpezar = () => {
+const startAgain = () => {
     Screen = 0
-    pantallaPrincipal()
+    mainScreen()
     location.reload()
   }
 
-const pantallaFinal = () => { 
-    graficaFinal.style.display = "block" 
-    cargarGrafica()
-    boton.style.display = "none"
-    puntua.style.display = "none"
-    referencia.innerHTML = `<p class = "container_p">Ojo, aquí van tus resultados!</p>
-                            <button class="container_advance" onclick="volverEmpezar()">Otro game</button> 
+const endScreen = () => { 
+    graphEnd.style.display = "block" 
+    loadGraph()
+    button.style.display = "none"
+    play.style.display = "none"
+    reference.innerHTML = `<p class = "container_p">Here you have your results!</p>
+                            <button class="container_advance" onclick="startAgain()">Play Again</button> 
                             `
-    guardarLocalStorage()
+    saveLocalStorage()
 }
 
-const guardarLocalStorage = () => {
+const saveLocalStorage = () => {
     const date = new Date();    
     const formatDate = (date)=>{
         let formatted_date = `${date.getHours()}:${date.getMinutes()}`
         return formatted_date;
     }
-    let misObjetos = JSON.parse(localStorage.getItem('resultados')) || [];
+    let myObjects = JSON.parse(localStorage.getItem('results')) || [];
 
-    const objeto = {
+    const object = {
         score,
-        fecha: formatDate(date)
+        date: formatDate(date)
     }
 
-    misObjetos.push(objeto)
+    myObjects.push(object)
 
-    localStorage.setItem('resultados', JSON.stringify(misObjetos));
+    localStorage.setItem('results', JSON.stringify(myObjects));
   }
 
-// Better Call Axios
 async function getQuestionsAsync() {
     try {
         let response = await axios('https://opentdb.com/api.php?amount=5');
@@ -114,17 +108,17 @@ async function getQuestionsAsync() {
 
         let arrayObject = []
         
-        arrObj.forEach(pregunta => {
+        arrObj.forEach(p => {
 
-            const {question, correct_answer, incorrect_answers} = pregunta
+            const {question, correct_answer, incorrect_answers} = p
             const answers = [correct_answer, ...incorrect_answers]
     
-            const desordenado = answers.sort()
+            const disordered = answers.sort()
 
             const object = {
                 question,
                 correct_answer,
-                desordenado
+                disordered
             }
             arrayObject = [...arrayObject, object]
         })
@@ -135,19 +129,18 @@ async function getQuestionsAsync() {
     }
 }
 
-// Main thread
-pantallaPrincipal()
+mainScreen()
 
 getQuestionsAsync().then(data => {
 
-    boton.addEventListener("click", () => {
+    button.addEventListener("click", () => {
 
-        elegirCorrecta(data)
+        chooseCorrect(data)
     
         if (Screen < Object.keys(data).length){
-            cargarDatos(data)
+            loadData(data)
         } else {
-            pantallaFinal()
+            endScreen()
         }
         
         Screen++

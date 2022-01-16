@@ -1,7 +1,5 @@
-/* Imports Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
 
-/* Reset styles */
 * {
     margin: 0;
     padding: 0;
@@ -9,13 +7,10 @@
     text-decoration: none;
 }
 
-/* Global variables */
 :root {
     --Dancing: 'Dancing Script', 'sans-serif';
   }
 
-/* Styles */
-/* Main container - First and Last Screen */
 body {
     display: flex;
     justify-content: center;
@@ -75,12 +70,11 @@ body {
     margin: 30px 0px;
 }
 
-/* Quiz questions-answers */
-.cuestionario {
+.quiz {
     margin:5px 0px;
 }
 
-.elemento {
+.element {
     width: 250px;
     height: 80px;
     display: flex;
@@ -112,7 +106,6 @@ input[type='radio'] {
     opacity: 0;
 }
 
-/* Graphics */
 .ct-chart, .ct-chart2 {
     height: 400px;
     width: 400px;
@@ -125,7 +118,6 @@ input[type='radio'] {
     font-weight: bold;
 }
 
-/* Responsive */
  @media (max-width: 800px) {
     #main {
         width: 650px;
