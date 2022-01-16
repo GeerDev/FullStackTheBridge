@@ -17,15 +17,15 @@ _Mi aplicación web simulando un Quiz donde se pueden contestar a unas preguntas
 
 Pantalla de inicio de la aplicación
 
-![foto](./Images_Proyect/PantallaPrincipalQuiz.png) 
+![foto](./Images_Project/PantallaPrincipalQuiz.png) 
 
 Formularios con las preguntas del Quiz
 
-![foto](./Images_Proyect/QuizPreguntas.png) 
+![foto](./Images_Project/QuizPreguntas.png) 
 
 Resultados obtenidos
 
-![foto](./Images_Proyect/Resultados.png) 
+![foto](./Images_Project/Resultados.png) 
 
 ---
 Hecho por [Germán Fernández](https://github.com/GeerDev) 😊 
