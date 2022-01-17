@@ -1,26 +1,70 @@
 const express = require("express");
 const app = express();
 
+app.use(express.json())
+
 const puerto = 3000;
+
+const productos = {
+    description: 'Productos',
+    items: [
+      { id: 1, nombre: 'Taza de Harry Potter' , precio: 300},
+      { id: 2, nombre: 'FIFA 22 PS5' , precio: 1000},
+      {  id: 3, nombre: 'Figura Goku Super Saiyan' , precio: 100},
+      {  id: 4,  nombre: 'Zelda Breath of the Wild' , precio: 200},
+      {  id: 5,  nombre: 'Skin Valorant' , precio: 120},
+      {  id: 6, nombre: 'Taza de Star Wars' , precio: 220}
+    ]
+  }
+
+const { items } = productos
 
 app.get('/',(req,res)=>{
     res.send("Hola esto es un mensaje de bienvenida")
 })
 
 app.get('/Productos',(req,res)=>{
-    res.send("Listado de productos Get")
+    res.json(productos)
 })
 
 app.post('/Productos',(req,res)=>{
-    res.send("Listado de productos Post")
+    const nuevoProducto = {
+        id: items.length + 1,
+        nombre: req.body.nombre,
+        precio: req.body.precio,
+    }
+    if(!req.body.nombre || !req.body.precio){
+        res.status(400).json({msg:'Por favor rellene su nombre o introduzca un precio'})
+    }
+
+    items.push(nuevoProducto)
+    res.json(productos)
 })
 
-app.put('/Productos',(req,res)=>{
-    res.send("Listado de productos Put")
+app.put('/Productos/:id',(req,res)=>{
+    const encontrado = items.some(producto => producto.id === +req.params.id)
+    if(encontrado){
+       items.forEach(producto =>{
+           if(producto.id === +req.params.id){
+                producto.nombre = req.body.nombre ? req.body.nombre: producto.nombre,
+                producto.precio = req.body.precio ? req.body.precio : producto.precio
+
+            res.json(producto)
+           }
+       })
+    }else{
+        res.status(404).json({msg:`Producto con el id ${req.params.id} no encontrado`})
+    }
 })
 
-app.delete('/Productos',(req,res)=>{
-    res.send("Listado de productos Delete")
+app.delete('/Productos/:id',(req,res)=>{
+    const encontrado = items.some(producto => producto.id === +req.params.id)
+
+    if(encontrado){
+        res.json(items.filter(producto => producto.id === +req.params.id))
+    }else{
+        res.status(404).json({msg:`Producto con el id ${req.params.id} no encontrado`})
+    }
 })
 
 app.get('/Usuarios',(req,res)=>{
