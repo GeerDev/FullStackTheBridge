@@ -8,8 +8,8 @@ const puerto = 3000;
 const productos = {
     description: 'Productos',
     items: [
-      { id: 1, nombre: 'Taza de Harry Potter' , precio: 300},
-      { id: 2, nombre: 'FIFA 22 PS5' , precio: 1000},
+      {  id: 1, nombre: 'Taza de Harry Potter' , precio: 300},
+      {  id: 2, nombre: 'FIFA 22 PS5' , precio: 1000},
       {  id: 3, nombre: 'Figura Goku Super Saiyan' , precio: 100},
       {  id: 4,  nombre: 'Zelda Breath of the Wild' , precio: 200},
       {  id: 5,  nombre: 'Skin Valorant' , precio: 120},
@@ -25,6 +25,38 @@ app.get('/',(req,res)=>{
 
 app.get('/Productos',(req,res)=>{
     res.json(productos)
+})
+
+app.get('/Productos/filtro/:precio',(req,res)=>{
+    const { precio } = req.params
+    res.json( items.filter(producto => producto.precio === +precio))
+})
+
+app.get('/Productos/FiltroRango',(req,res)=>{
+    const filtrado = items.filter(producto => producto.precio > 50 && producto.precio < 250 )
+    res.json(filtrado)
+})
+
+app.get('/Productos/:id',(req,res)=>{
+    const encontrado = items.some(producto => producto.id === +req.params.id)
+
+    if(encontrado){
+        res.json(items.filter(producto => producto.id === +req.params.id))
+    }else{
+        res.status(404).json({msg:`Producto con el id ${req.params.id} no encontrado`})
+    }
+})
+
+app.get('/Productos/filtronombre/:nombre',(req,res)=>{
+    console.log(req.params.nombre);
+    console.log(items[0].nombre);
+    const encontrado = items.some(producto => producto.nombre === req.params.nombre)
+
+    if(encontrado){
+        res.json(items.filter(producto => producto.nombre === req.params.nombre))
+    }else{
+        res.status(404).json({msg:`Producto con el nombre ${req.params.nombre} no encontrado`})
+    }
 })
 
 app.post('/Productos',(req,res)=>{
