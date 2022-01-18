@@ -1,6 +1,8 @@
 const express = require("express");
+const cors = require('cors')
 const app = express();
 
+app.use(cors())
 app.use(express.json())
 
 const puerto = 3000;
@@ -48,8 +50,6 @@ app.get('/Productos/:id',(req,res)=>{
 })
 
 app.get('/Productos/filtronombre/:nombre',(req,res)=>{
-    console.log(req.params.nombre);
-    console.log(items[0].nombre);
     const encontrado = items.some(producto => producto.nombre === req.params.nombre)
 
     if(encontrado){
@@ -66,7 +66,7 @@ app.post('/Productos',(req,res)=>{
         precio: req.body.precio,
     }
     if(!req.body.nombre || !req.body.precio){
-        res.status(400).json({msg:'Por favor rellene su nombre o introduzca un precio'})
+        return res.status(400).json({msg:'Por favor rellene su nombre o introduzca un precio'})
     }
 
     items.push(nuevoProducto)
@@ -91,9 +91,12 @@ app.put('/Productos/:id',(req,res)=>{
 
 app.delete('/Productos/:id',(req,res)=>{
     const encontrado = items.some(producto => producto.id === +req.params.id)
-
+  
     if(encontrado){
-        res.json(items.filter(producto => producto.id === +req.params.id))
+        const borrar = items.filter(producto => producto.id === +req.params.id)
+        const indice = items.map(producto => producto.id).indexOf(borrar[0].id)
+        items.splice(indice, 1)
+        res.json(items)
     }else{
         res.status(404).json({msg:`Producto con el id ${req.params.id} no encontrado`})
     }
