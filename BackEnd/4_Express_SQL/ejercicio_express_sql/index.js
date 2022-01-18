@@ -173,6 +173,26 @@ app.delete('/deleteproduct/:id',(req,res)=>{
     })
   })
 
+// EXTRA - EXTRA - EXTRA - EXTRA
+// Creamos las tablas
+app.get('/createtableusers',(req,res)=>{
+    let sql = 'CREATE TABLE expressDB.users(id INT AUTO_INCREMENT,first_name VARCHAR(50),last_name VARCHAR(50),phone INT,PRIMARY KEY(id))'
+      db.query(sql,(err,result)=> {
+        if(err) throw err;
+        console.log(result);
+        res.send('Posts table users created...')
+      })
+    })
+
+app.get('/createtableorders',(req,res)=>{
+    let sql = 'CREATE TABLE expressDB.orders(id INT AUTO_INCREMENT,fecha date,user_id INT,PRIMARY KEY(id),FOREIGN KEY(user_id) REFERENCES expressDB.users(id))'
+        db.query(sql,(err,result)=> {
+          if(err) throw err;
+          console.log(result);
+          res.send('Posts table orders created...')
+        })
+    })
+
 app.listen(5000,()=>{
     console.log('servidor levantado en el puerto 5000')
 })
