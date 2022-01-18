@@ -185,13 +185,98 @@ app.get('/createtableusers',(req,res)=>{
     })
 
 app.get('/createtableorders',(req,res)=>{
-    let sql = 'CREATE TABLE expressDB.orders(id INT AUTO_INCREMENT,fecha date,user_id INT,PRIMARY KEY(id),FOREIGN KEY(user_id) REFERENCES expressDB.users(id))'
+    let sql = 'CREATE TABLE expressDB.orders(id INT AUTO_INCREMENT,fecha date,user_id INT,PRIMARY KEY(id),FOREIGN KEY(user_id) REFERENCES expressDB.users(id) ON DELETE CASCADE)'
         db.query(sql,(err,result)=> {
           if(err) throw err;
           console.log(result);
           res.send('Posts table orders created...')
         })
     })
+
+// Crear
+app.post('/createuser',(req,res)=>{
+    let post = {first_name:req.body.first_name, last_name:req.body.last_name, phone:req.body.phone};
+    let sql = 'INSERT INTO expressDB.users SET ?'
+    db.query(sql,post,(err,result)=> {
+      if(err) throw err;
+      console.log(result);
+      res.send('Post in users added...')
+    })
+  })
+
+app.post('/createorder',(req,res)=>{
+    let post = {fecha:req.body.fecha, user_id:req.body.user_id};
+    let sql = 'INSERT INTO expressDB.orders SET ?'
+    db.query(sql,post,(err,result)=> {
+      if(err) throw err;
+      console.log(result);
+      res.send('Post in orders added...')
+    })
+  })
+
+// Actualizar
+app.put('/user/:id',(req,res)=>{
+    let newTitle = req.body.first_name;
+    let sql = `UPDATE expressDB.users SET first_name = '${newTitle}' WHERE id = ${req.params.id}`;
+    db.query(sql, (err,result)=> {
+      if(err) throw err;
+      res.send('Post user updated...')
+    })
+  })
+
+// Obtener
+app.get('/users',(req,res)=> {
+    let sql = 'SELECT * FROM expressDB.users';
+    db.query(sql,(err,result)=> {
+      if(err) throw err;
+      res.send(result)
+    })
+  })
+
+app.get('/orders',(req,res)=> {
+    let sql = 'SELECT * FROM expressDB.orders';
+    db.query(sql,(err,result)=> {
+      if(err) throw err;
+      res.send(result)
+    })
+  })
+ 
+app.get('/usersorders',(req,res)=> {
+    let sql = 'SELECT first_name, fecha FROM expressDB.users INNER JOIN expressDB.orders ON users.id = orders.user_id';
+    db.query(sql,(err,result)=> {
+      if(err) throw err;
+      res.send(result)
+    })
+  })
+
+app.get('/users/id/:id',(req,res)=> {
+    let sql = `SELECT * FROM expressDB.users WHERE id = ${req.params.id}`;
+    db.query(sql,(err,result)=> {
+      if(err) throw err;
+      res.send(result)
+    })
+  })  
+
+// Borrar
+// Borramos la tabla
+// La volvemos a crear con ON DELETE CASCADE
+// Añadimos valores a Orders
+// Ya podemos borrar cualquier valor de user por ID
+app.get('/fixed',(req,res)=> {
+    let sql = `DROP TABLE expressDB.orders;`;
+    db.query(sql,(err,result)=> {
+      if(err) throw err;
+      res.send(result)
+    })
+  })  
+
+app.delete('/deleteuser/:id',(req,res)=>{
+    let sql = `DELETE FROM expressDB.users WHERE id = ${req.params.id}`;
+    db.query(sql, (err,result)=> {
+      if(err) throw err;
+      res.send('User deleted')
+    })
+  })
 
 app.listen(5000,()=>{
     console.log('servidor levantado en el puerto 5000')
