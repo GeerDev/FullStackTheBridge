@@ -44,7 +44,7 @@ app.get('/createtablecategories',(req,res)=>{
     })
 
 app.get('/createtableproductscategories',(req,res)=>{
-    let sql = 'CREATE TABLE expressDB.productoscategorias(id INT AUTO_INCREMENT,product_id INT,category_id INT,PRIMARY KEY(id),FOREIGN KEY(product_id) REFERENCES expressDB.products(id),FOREIGN KEY(category_id) REFERENCES expressDB.categories(id))'
+    let sql = 'CREATE TABLE expressDB.productscategories(id INT AUTO_INCREMENT,product_id INT,category_id INT,PRIMARY KEY(id),FOREIGN KEY(product_id) REFERENCES expressDB.products(id),FOREIGN KEY(category_id) REFERENCES expressDB.categories(id))'
         db.query(sql,(err,result)=> {
           if(err) throw err;
           console.log(result);
@@ -91,6 +91,73 @@ app.put('/category/:id',(req,res)=>{
       res.send('Post category updated...')
     })
   })
+
+// Endpoints Obtener
+app.get('/products',(req,res)=> {
+    let sql = 'SELECT * FROM expressDB.products';
+    db.query(sql,(err,result)=> {
+      if(err) throw err;
+      res.send(result)
+    })
+  })
+
+app.get('/categories',(req,res)=> {
+    let sql = 'SELECT * FROM expressDB.categories';
+    db.query(sql,(err,result)=> {
+      if(err) throw err;
+      res.send(result)
+    })
+  })
+
+app.post('/between',(req,res)=>{
+    let post = {product_id:req.body.product_id, category_id:req.body.category_id};
+    let sql = 'INSERT INTO expressDB.productscategories SET ?'
+    db.query(sql,post,(err,result)=> {
+      if(err) throw err;
+      console.log(result);
+      res.send('Post in productscategories added...')
+    })
+  })
+
+app.get('/productscategories',(req,res)=> {
+    let sql = 'SELECT name_product, name_category FROM expressDB.productscategories INNER JOIN expressDB.categories ON categories.id = productscategories.category_id INNER JOIN expressDB.products ON products.id = productscategories.product_id';
+    db.query(sql,(err,result)=> {
+      if(err) throw err;
+      res.send(result)
+    })
+  })
+
+app.get('/products/id/:id',(req,res)=> {
+    let sql = `SELECT * FROM expressDB.products WHERE id = ${req.params.id}`;
+    db.query(sql,(err,result)=> {
+      if(err) throw err;
+      res.send(result)
+    })
+  })  
+
+app.get('/products/desc',(req,res)=> {
+    let sql = `SELECT * FROM expressDB.products order by id desc`;
+    db.query(sql,(err,result)=> {
+      if(err) throw err;
+      res.send(result)
+    })
+  })  
+
+app.get('/categories/id/:id',(req,res)=> {
+    let sql = `SELECT * FROM expressDB.categories WHERE id = ${req.params.id}`;
+    db.query(sql,(err,result)=> {
+      if(err) throw err;
+      res.send(result)
+    })
+  })  
+
+app.get('/products/name/:name',(req,res)=> {
+    let sql = `SELECT * FROM expressDB.products WHERE name_product = '${req.params.name}'`;
+    db.query(sql,(err,result)=> {
+      if(err) throw err;
+      res.send(result)
+    })
+  })  
 
 app.listen(5000,()=>{
     console.log('servidor levantado en el puerto 5000')
