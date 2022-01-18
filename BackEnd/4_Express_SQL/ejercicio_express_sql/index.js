@@ -159,6 +159,20 @@ app.get('/products/name/:name',(req,res)=> {
     })
   })  
 
+// Endpoints Eliminar
+app.delete('/deleteproduct/:id',(req,res)=>{
+    let sql = `DELETE FROM expressDB.productscategories WHERE product_id = 1`;
+    let lqs = `DELETE FROM expressDB.products WHERE id = ${req.params.id}`;
+    db.query(sql, (err,result)=> {
+      if(err) throw err;
+      res.send('Product deleted 1 step')
+    })
+    db.query(lqs, (err,result)=> {
+        if(err) throw err;
+        res.send('Product deleted 2 step')
+    })
+  })
+
 app.listen(5000,()=>{
     console.log('servidor levantado en el puerto 5000')
 })
