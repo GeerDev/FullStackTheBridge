@@ -5,8 +5,6 @@ require('dotenv').config()
 
 app.use(express.json())
 
-console.log(process.env);
-
 const db = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
@@ -54,6 +52,28 @@ app.get('/createtableproductscategories',(req,res)=>{
         })
     })
 
+// Endpoints Crear
+app.post('/createproduct',(req,res)=>{
+    let post = {name_product:req.body.name_product, price:req.body.price};
+    let sql = 'INSERT INTO expressDB.products SET ?'
+    db.query(sql,post,(err,result)=> {
+      if(err) throw err;
+      console.log(result);
+      res.send('Post in products added...')
+    })
+  })
+
+app.post('/createcategory',(req,res)=>{
+    let post = {name_category:req.body.name_category, _description:req.body._description};
+    let sql = 'INSERT INTO expressDB.categories SET ?'
+    db.query(sql,post,(err,result)=> {
+      if(err) throw err;
+      console.log(result);
+      res.send('Post in categories added...')
+    })
+  })
+
+// Endpoints
 
 app.listen(5000,()=>{
     console.log('servidor levantado en el puerto 5000')
