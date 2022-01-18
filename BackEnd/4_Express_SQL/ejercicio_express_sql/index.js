@@ -73,7 +73,24 @@ app.post('/createcategory',(req,res)=>{
     })
   })
 
-// Endpoints
+// Endpoints Actualizar
+app.put('/product/:id',(req,res)=>{
+    let newTitle = req.body.name_product;
+    let sql = `UPDATE expressDB.products SET name_product = '${newTitle}' WHERE id = ${req.params.id}`;
+    db.query(sql, (err,result)=> {
+      if(err) throw err;
+      res.send('Post product updated...')
+    })
+  })
+
+app.put('/category/:id',(req,res)=>{
+    let newTitle = req.body._description;
+    let sql = `UPDATE expressDB.categories SET _description = '${newTitle}' WHERE id = ${req.params.id}`;
+    db.query(sql, (err,result)=> {
+      if(err) throw err;
+      res.send('Post category updated...')
+    })
+  })
 
 app.listen(5000,()=>{
     console.log('servidor levantado en el puerto 5000')
