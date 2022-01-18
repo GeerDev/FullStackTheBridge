@@ -4,11 +4,11 @@ const mysql = require('mysql2');
 require('dotenv').config()
 
 app.use(express.json())
-
+ 
 const db = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
-  password : 'GeraMysql17!',
+  password : process.env.DB_PASS,
   database:'expressDB'
 });
 
