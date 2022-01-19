@@ -31,7 +31,8 @@
                 return res
             }
         catch (err) {
-            console.error(err?.response?.data?.msg)
+            const fallo = document.getElementById('error')
+            fallo.innerHTML = `${err?.response?.data?.msg}`
             } 
     }
 
