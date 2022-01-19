@@ -53,8 +53,19 @@
     }
 
     const borrar = (elemento) => {
-        console.log(elemento);
-        eliminarElemento(elemento).then(datos => pintarEnPantalla(datos.data))
+        eliminarElemento(elemento).then(datos => {
+            datos.data.forEach(dato => {
+                const { id, nombre, precio} = dato
+                contenedor.innerHTML += `<div class = "bloque">
+                                        <p class="parrafo">Nombre del producto: ${nombre}</p>
+                                        <p class="parrafo">Precio del producto: ${precio}</p>
+                                        <button class="bg-transparent hover:bg-red-500 text-red-700 font-semibold hover:text-white py-2 px-4 border border-red-500 hover:border-transparent rounded" onclick = "borrar(${id})">
+                                        Eliminar: ${nombre}
+                                        </button>
+                                        </div>`
+            })
+        })
+        .catch(err => console.error(err))
         contenedor.innerHTML = ``;
     }
 
