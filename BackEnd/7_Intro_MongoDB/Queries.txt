@@ -1,0 +1,146 @@
+// Crear una base de datos
+mongosh
+use introMongoDB
+show dbs (Hasta que no insertas algo no te va a aparecer)
+
+// Crear las colecciones
+db.createCollection('Users')
+db.createCollection('Posts')
+
+// Introducir users
+db.users.insertMany([
+   { Username: "Paquito", Email: "paquito@gmail.com", Age: 89 },
+   { Username: "Manolita", Email: "manolita@gmail.com", Age: 12 },
+   { Username: "Juanito", Email: "juanito@gmail.com", Age: 34 },
+   { Username: "Pepe", Email: "pepe@gmail.com", Age: 56 },
+   { Username: "Laura", Email: "laura@gmail.com", Age: 23 },
+   { Username: "Maria", Email: "maria@gmail.com", Age: 23 },
+   { Username: "Sandra", Email: "sandra@gmail.com", Age: 56 },
+   { Username: "Raul", Email: "raul@gmail.com", Age: 12 },
+   { Username: "Fernando", Email: "fernando@gmail.com", Age: 90 },
+   { Username: "Andres", Email: "andres@gmail.com", Age: 102 },
+])
+
+-- Sacar los que hemos creado -- db.users.find()
+
+// Introducir posts con sus comments
+db.posts.insertMany([
+   { Title: "Titulo 1", Body: "Cuerpo 1", Username: "Usuario 1", comments: [{Username: "Comentario 1", Body: "Cuerpo del comentario 1"}] },
+   { Title: "Titulo 2", Body: "Cuerpo 2", Username: "Usuario 2", comments: [{Username: "Comentario 2", Body: "Cuerpo del comentario 2"}] },
+   { Title: "Titulo 3", Body: "Cuerpo 3", Username: "Usuario 3", comments: [{Username: "Comentario 3", Body: "Cuerpo del comentario 3"}] },
+   { Title: "Titulo 4", Body: "Cuerpo 4", Username: "Usuario 4", comments: [{Username: "Comentario 4", Body: "Cuerpo del comentario 4"}] },
+   { Title: "Titulo 5", Body: "Cuerpo 5", Username: "Usuario 5", comments: [{Username: "Comentario 5", Body: "Cuerpo del comentario 5"}] },
+   { Title: "Titulo 6", Body: "Cuerpo 6", Username: "Usuario 6", comments: [{Username: "Comentario 6", Body: "Cuerpo del comentario 6"}] },
+   { Title: "Titulo 7", Body: "Cuerpo 7", Username: "Usuario 7", comments: [{Username: "Comentario 7", Body: "Cuerpo del comentario 7"}] },
+   { Title: "Titulo 8", Body: "Cuerpo 8", Username: "Usuario 8", comments: [{Username: "Comentario 8", Body: "Cuerpo del comentario 8"}] },
+   { Title: "Titulo 9", Body: "Cuerpo 9", Username: "Usuario 9", comments: [{Username: "Comentario 9", Body: "Cuerpo del comentario 9"}] },
+   { Title: "Titulo 10", Body: "Cuerpo 10", Username: "Usuario 10", comments: [{Username: "Comentario 10", Body: "Cuerpo del comentario 10"}] },
+   { Title: "Titulo 11", Body: "Cuerpo 11", Username: "Usuario 11", comments: [{Username: "Comentario 11", Body: "Cuerpo del comentario 11"}] },
+   { Title: "Titulo 12", Body: "Cuerpo 12", Username: "Usuario 12", comments: [{Username: "Comentario 12", Body: "Cuerpo del comentario 12"}] },
+   { Title: "Titulo 13", Body: "Cuerpo 13", Username: "Usuario 13", comments: [{Username: "Comentario 13", Body: "Cuerpo del comentario 13"}] },
+   { Title: "Titulo 14", Body: "Cuerpo 14", Username: "Usuario 14", comments: [{Username: "Comentario 14", Body: "Cuerpo del comentario 14"}] },
+   { Title: "Titulo 15", Body: "Cuerpo 15", Username: "Usuario 15", comments: [{Username: "Comentario 15", Body: "Cuerpo del comentario 15"}] }
+])
+
+-- Sacar los que hemos creado -- db.posts.find()
+
+// Actualizar los datos
+// Publicación entera
+db.posts.updateMany(
+    { Title: 'Titulo 1' },
+    { $set:{Title: "Titulo Actualizado", Body: "Cuerpo Actualizado", Username: "Usuario Actualizado", comments: [{Username: "Comentario Actualizado", Body: "Cuerpo del comentario Actualizado"}]}})
+// Un campo de la Publicación
+db.posts.update({ Title: 'Titulo 2' },
+{
+  $set: {
+    Body: "Hemos cambiado solo un campo jaja"
+  }
+})
+// Un campo anidado de la Publicación -- Body de un comment dentro de un post
+db.posts.update({ Title: 'Titulo 15' },
+{
+  $set: {
+      comments : [{Username: "Comentario 15", Body: "Cambiando algo anidado"}]
+  }
+})
+// Un Usuario entero
+db.users.updateMany({ Username: 'Paquito' },
+{ $set:{ Username: "Paquito 2.0", Email: "paquitoactualizado@gmail.com", Age: 87 }})
+// Cambiar 2 Emails
+db.users.updateMany({ Age: 23 },
+{ $set:{ Email: "tenemoselmismoemailjaja@gmail.com"}})
+// Aumenta en 5 años la edad de un Usuario
+db.users.update({ Username: 'Andres' },
+{
+  $inc: {
+    Age: 5
+  }
+})
+
+// Obtener datos
+// Seleccionar todas las publicaciones
+db.posts.find()
+
+// Selecciona las publicaciones que coincidan con el username indicado
+db.posts.find({Username: "Usuario 14"})
+
+// Seleccione todos los usuarios con una edad mayor a 20
+db.users.find({Age:{$gt:20}})
+
+// Seleccione todos los usuarios con una edad inferior a 23
+db.users.find({Age:{$lt:23}})
+
+// Seleccione todos los usuarios que tengan una edad entre 25 y 30 años
+db.users.find({ $and:[
+{Age:{$gt:10}},{Age:{$lt:30}}
+]})
+
+// Muestra los usuarios de edad menor a mayor y viceversa
+db.users.find().sort({ Age: 1 })
+db.users.find().sort({ Age: -1 })
+
+// Seleccione el número total de usuarios
+db.users.find().count()
+
+// Seleccione el número total de publicaciones que tienen más de un comentario
+db.posts.insertOne({Title: "Titulo 16", Body: "Cuerpo 16", Username: "Usuario 16", comments: [{Username: "Comentario 16", Body: "Cuerpo del comentario 16"},{Username: "Comentario 17", Body: "Cuerpo del comentario 17"}]})
+db.posts.find({ $where: function ( ) { return obj.comments.length > 1 } }).count()
+
+// Otra manera utilizando $size y el operador $not
+db.posts.find({
+    $and:[
+    {comments:{ $not: {$size: 0} }},
+    {comments:{ $not: {$size: 1} }}
+    ]
+})
+
+// Seleccione la última publicación creada
+db.posts.find().sort({$natural:-1}).limit(1)
+
+// Seleccione todas las publicaciones de la siguiente manera: Título de la publicación: "título de las publicaciones"
+db.posts.find().forEach((doc)=> {
+  print("Título de la publicación: " + doc.Title)
+})
+
+// Selecciona solo 2 usuarios
+db.users.find().limit(2)
+
+// Selecciona 5 publicaciones y que sean las últimas creadas
+db.posts.find().sort({$natural:-1}).limit(5)
+
+// Busca por title 2 publicaciones
+db.posts.createIndex({ Title: 'text' })
+db.posts.find({
+  $text: {
+    $search: "Actualizado"
+    }
+})
+
+// Borrar datos
+// Elimina a todos los usuarios con una edad mayor a 30
+db.users.deleteMany({Age:{$gt:30}})
+
+// Elimina todas las publicaciones que tengan más de un comentario
+db.posts.deleteMany({$where: function ( ) { return obj.comments.length > 1 } })
+db.posts.find()
+
