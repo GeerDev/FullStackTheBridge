@@ -1,0 +1,22 @@
+.card {
+    width: 300px;
+    text-align: center;
+    padding: 1em;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 1em;
+    border: 1px solid #222; 
+    background-color: #DAE0F2;
+}
+
+.card img {
+    width: 100%;
+}
+
+.card ul {
+    margin-top: 0.5em;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6em;
+    justify-content: center;
+}

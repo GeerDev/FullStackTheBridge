@@ -1,0 +1,15 @@
+.tecnologies {
+    display: flex;
+    gap: 1em;
+}
+
+.tecnologies span {
+    font-size: 3em;
+}
+
+@media (max-width: 900px){
+.tecnologies {
+    justify-content: center;
+    flex-wrap: wrap;
+}
+}

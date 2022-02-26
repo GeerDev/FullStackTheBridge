@@ -1,0 +1,39 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 15px 0px 15px 0px;
+    background-color: lavenderblush;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}
+
+.logo_icon {
+    font-size: 2em;
+}
+
+.list {
+    display: flex;
+}
+
+.list li {
+    margin: 0px 10px 0px 10px;
+}
+
+.menu {
+    display: none;
+}
+
+@media (max-width: 600px){
+.list {
+    display: none;
+}
+
+.menu {
+    display: block;
+}
+}

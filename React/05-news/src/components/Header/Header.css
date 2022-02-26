@@ -1,0 +1,120 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #111344;
+    font-family: 'Ubuntu', 'sans-serif';
+    color: white;
+    font-size: 1.2em;
+    font-weight: 500;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.1);
+}
+
+.logo img {
+    filter: invert(1);
+    width: 5em;
+    height: 3.5em;
+}
+
+.list {
+    display: flex;
+}
+
+.list li {
+    padding: 1.5em 0;
+    margin: 0 10px;
+    position: relative;
+    font-weight: 300;
+    color: white;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    overflow: hidden;
+}
+
+.list li:hover {
+    color: #F9CFF2;
+}
+
+.list li:before,
+.list li:after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: white;
+    transition: transform 0.3s;
+}
+
+.list li:before {
+    top: 23px;
+    transform: translateX(-100%);
+}
+
+.list li:after {
+    bottom: 23px;
+    transform: translateX(100%);
+}
+
+.list li:hover::before,
+.list li:hover::after {
+    transform: translateX(0);
+    overflow: hidden;
+}
+
+.menu-btn {
+    font-size: 1.3em;
+    display: none;
+}
+
+@media (max-width: 700px){
+    .menu-btn {
+        font-size: 1.3em;
+        cursor: pointer;
+        display: block;
+    }
+
+    .list {
+        position: fixed;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        height: 100%;
+        width: 100%;
+        left: -100%;
+        top: 0;
+        background-color: #111344;
+        text-align: center;
+        padding-top: 60px;
+        z-index: 998;
+        transition: all 0.3s ease;
+    }
+
+    .list_active {
+        left: 0;
+    }
+
+    .navbar {
+        font-size: 1em;
+    }
+
+    .list li:before {
+        top: 20px;
+        transform: translateX(-100%);
+    }
+    
+    .list li:after {
+        bottom: 20px;
+        transform: translateX(100%);
+    }
+}

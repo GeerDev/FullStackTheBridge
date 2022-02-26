@@ -1,0 +1,27 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+    border: none;
+    outline: none;
+  }
+  
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Ubuntu:wght@400;500;700&display=swap');
+  
+  .app {
+    min-height: 100vh;
+    position: relative;
+    padding-bottom: 2em;
+    background-image: url(./assets/Comida.webp);
+  }
+
+  .container {
+    padding-top: 2em;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2em;
+    justify-content: center;
+    min-height: 75vh;
+  }

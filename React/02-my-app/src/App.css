@@ -1,0 +1,23 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+    border: none;
+	outline: none;
+}
+
+.app {
+    background-color: brown;
+    font-family: 'Mukta', sans-serif;
+    min-height: 100vh;
+    position: relative;
+    padding-bottom: 2em;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

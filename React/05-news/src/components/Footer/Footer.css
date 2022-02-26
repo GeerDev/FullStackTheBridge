@@ -1,0 +1,29 @@
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #111344;
+    font-family: 'Ubuntu', 'sans-serif';
+    color: white;
+    position: absolute;
+    bottom: 0;
+    padding: 1em;
+    font-size: 1.2em;
+    width: 100%;
+}
+
+.footer_github {
+    margin-left: 0.5em;
+    transition: all 0.3s ease;
+    color: white
+}
+
+.footer_github:hover {
+    color: #F9CFF2;
+}
+
+@media (max-width: 700px){
+    .footer {
+        font-size: 1em;
+    }
+}

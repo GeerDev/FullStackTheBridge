@@ -1,0 +1,32 @@
+.scroll-to-top {
+    position: fixed;
+    right: 1%;
+    bottom: 0;
+    cursor: pointer;
+    filter: invert(1);
+    transition:color 0.3s ease;
+    z-index: 999;
+}
+
+.scroll-btn {
+    font-size: 3em;
+  }
+
+.scroll-to-top:hover {
+    color: #f7dc94;
+}
+
+@media (max-width: 500px){
+    .scroll-to-top {
+        position: fixed;
+        right: 1%;
+        bottom: 0;
+        cursor: pointer;
+        transition:color 0.3s ease;
+        color: #f7dc94;
+    }
+
+    .scroll-to-top:hover {
+        color: #222;
+    }
+}
