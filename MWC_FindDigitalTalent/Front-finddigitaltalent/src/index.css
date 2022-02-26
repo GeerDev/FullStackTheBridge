@@ -1,0 +1,208 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap');
+
+.navbar {
+  z-index: 1000;
+}
+
+.navbar-brand {
+    margin-left: 20px;
+}
+
+.navbar-nav {
+    margin-right: 20px;
+}
+
+.cover {
+    background: url("assets/Computer.jpg") center no-repeat;
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+.heightDiv {
+    height: 100vh;
+    color: white;
+    font-family: 'Ubuntu', 'sans-serif';
+}
+  
+  .form {
+    background-color: #212529;
+    border-radius: 20px;
+    box-sizing: border-box;
+    height: 500px;
+    padding: 20px;
+    width: 320px;
+  }
+  
+  .title {
+    color: #eee;
+    font-family: sans-serif;
+    font-size: 36px;
+    font-weight: 600;
+  }
+  
+  .subtitle {
+    color: #eee;
+    font-family: sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 10px;
+  }
+  
+  .input-container {
+    height: 50px;
+    position: relative;
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .input-description {
+    height: 100px;
+    position: relative;
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .input-error {
+    height: 50px;
+    position: relative;
+    width: 100%;
+    margin-top: 10px;
+    color:#C70E34;
+  }
+  
+  .input {
+    background-color: #303245;
+    border-radius: 12px;
+    border: 0;
+    box-sizing: border-box;
+    color: #eee;
+    font-size: 18px;
+    height: 100%;
+    outline: 0;
+    padding: 4px 20px 0;
+    width: 100%;
+  }
+
+  .input-select {
+    background-color: #303245;
+    border-radius: 12px;
+    border: 0;
+    color: #eee;
+    font-size: 18px;
+    height: 100%;
+    outline: 0;
+    padding: 4px 20px 0;
+    width: 100%;
+    font-family: sans-serif;
+  }
+  
+  .submit {
+    background-color: #C70E34;
+    border-radius: 12px;
+    border: 0;
+    box-sizing: border-box;
+    color: #eee;
+    cursor: pointer;
+    font-size: 18px;
+    height: 50px;
+    margin-top: 38px;
+    text-align: center;
+    width: 100%;
+  }
+  
+  .submit:hover {
+    background-color: white;
+    color: #C70E34;
+    transition: 1s all;
+  }
+
+  textarea {
+    resize: none;
+  }
+
+  .card {
+      width: 250px;
+  }
+
+  .card img {
+      height: 150px;
+  }
+  .card-body {
+      height: 220px;
+      background-color: #212529;
+      text-align: center;
+  }
+
+  .color {
+    background-color: #212529;
+  }
+
+  .color2 {
+    background-color: #303245;
+    color: white;
+  }
+
+  .input-hability {
+    height: 50px;
+    position: relative;
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .submit2 {
+    background-color: #C70E34;
+    padding-left: 50px;
+    padding-right: 50px;
+    border-radius: 12px;
+    border: 0;
+    box-sizing: border-box;
+    color: #eee;
+    cursor: pointer;
+    font-size: 18px;
+    height: 50px;
+    margin-top: 38px;
+    text-align: center;
+    width: 100%;
+  }
+
+  .tag-box {
+    text-align: center;
+    margin:10px;
+    padding:5px;
+    border: 3px solid white;
+    border-radius: 5px;
+    background-color:rgba(0, 150, 136, 0);
+  }
+
+  .heightstandart {
+    margin-top: 20px;
+    height: 300px;
+    align-content: flex-start;
+  }
+
+  .heightstandartdetail {
+    height: 50px;
+    margin-bottom: 20px;
+    align-content: flex-start;
+  }
+
+  #isDigitalTalent {
+    background-color: #303245;
+    border-radius: 12px;
+    border: 0;
+    padding: 4px 20px 0;
+    box-sizing: border-box;
+    color: #eee;
+    font-size: 18px;
+    outline: 0;
+    width: 40%;
+  }
+
+  .size {
+    height: 500px;
+    width: 100%;
+  }
+
